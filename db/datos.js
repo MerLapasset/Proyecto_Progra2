@@ -4,8 +4,8 @@ const informacion=
      {
         usuario: {
             id: 1, //esta bien? 
-            numbreUs: "juana@gmail.com",
-            nacimiento: "2005/04/24",
+            numbreUs: "juana@gmail.com", //hay que agregar el us tmb? tipo el nombre solo 
+            nacimiento: "2005/04/24", 
             fotoPerfil: './public/images/users/default-image.png',
             contrasenia: 234567,
             dni: 34567234
