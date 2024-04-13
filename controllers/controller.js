@@ -6,7 +6,7 @@ const controllers= {
     },
    
     registro: function (req,res) {
-        return res.render ('registro')
+        return res.render ('register')
    
     }
 
