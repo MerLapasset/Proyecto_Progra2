@@ -8,6 +8,11 @@ const controllers= {
     registro: function (req,res) {
         return res.render ('register')
    
+    },
+    editarPerfil: function (req,res) {
+        return res.render ('profile-edit')
+   
+        
     }
 
 }
