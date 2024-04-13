@@ -4,11 +4,13 @@ const informacion= [
     //
     {
         usuario: {
-            id: 1,
-            email: "juana@gmail.com",
-            nacimiento: 30-12-2004,//checkear formato 
-            foroPerfil: "./public/imagenes/juana.npg",
-            contrasenia: 234567  },
+            id: 1, //esta bien? 
+            numbreUs: "juana@gmail.com",
+            nacimiento: "2005/04/24",
+            fotoPerfil: './public/images/users/default-image.png',
+            contrasenia: 234567,
+            dni: 34567234
+         },
 
         productos: [
             { //libro 1 (producto 1)
