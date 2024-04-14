@@ -1,4 +1,6 @@
-const informacion= [
+const informacion= {
+    lista: [
+
     //hice solo un usuario para que podamos empezar, el proyecto pide que hagamos uno solo. Sin embargo, la base de datos te pide 5, por eso hice una lista de objetos, lo deje armado como para que cada objeto (son 5) represente u usuario con sus 10 productos 
     //hay que poner fotos de verdad 
     //
@@ -303,7 +305,7 @@ const informacion= [
     {},  // estos objetos literales representan los 4 usuarios restantes, con esto podiramos ir empezando a trabajar bien
     {},
     {},
-    {} ]
+    {} ]}
 
 
 
