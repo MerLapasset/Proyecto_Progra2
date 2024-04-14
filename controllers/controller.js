@@ -34,7 +34,16 @@ const controllers= {
         return res.render ('profile-edit')
    
         
-    }
+    },
+    resultados: function (req,res) {
+        
+
+
+
+
+        return res.render ('search-results', )
+    },
+    
 
 }
 

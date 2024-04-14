@@ -6,6 +6,7 @@ router.get ("/",controllerGeneral.index) // en vez del controller redirige direc
 
 router.get ("/register",controllerGeneral.registro) // en vez del controller redirige direct a el ejs
 router.get ("/editarPerfil",controllerGeneral.editarPerfil) // en vez del controller redirige direct a el ejs
+router.get ("/resultadosBusqueda",controllerGeneral.resultados) // en vez del controller redirige direct a el ejs
 
 
 
