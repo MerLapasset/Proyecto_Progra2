@@ -6,24 +6,19 @@ const controllers= {
     index: function (req,res) {
         let listaArticulos = []
 
-        for (let i = 0; i < dataBase.length; i++) {
-            let v = i
-            
-            for (let i = 0; i < 10; i++) {
-                listaArticulos.push({
-                    id: dataBase.productos[i].id,
-                    imagen: dataBase.productos[i].imagen,
-                    nombreProducto: dataBase.productos[i].nombreProducto,
-                    descripcion: dataBase.productos[i].descripcion,
-                    numComentarios: dataBase.productos[i].comentarios
-                }
-            ) 
-        }
-            
-        }
-        
+        for (let i = 0; i < dataBase.productos.length; i++) {
+            listaArticulos.push({
+                
+                id: dataBase.productos[i].id,
+                imagen: dataBase.productos[i].imagen,
+                nombreProducto: dataBase.productos[i].nombreProducto,
+                descripcion: dataBase.productos[i].descripcion,
+                numComentarios: dataBase.productos[i].comentarios.length
+                
+
+        })}
         console.log(listaArticulos);
-        return res.render(listaArticulos)
+        return res.render('index', {listaArticulos})
     },
    
     registro: function (req,res) {
