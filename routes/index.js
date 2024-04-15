@@ -1,13 +1,12 @@
 let express = require('express');
 let router = express.Router();
 let controllerGeneral= require ("../controllers/controller")
-router.get ("/",controllerGeneral.index) // en vez del controller redirige direct a el ejs
+router.get ("/",controllerGeneral.index) 
 //router.get("/product", controllerGeneral.product)
 
-router.get ("/register",controllerGeneral.registro) // en vez del controller redirige direct a el ejs
-router.get ("/editarPerfil",controllerGeneral.editarPerfil) // en vez del controller redirige direct a el ejs
-router.get ("/resultadosBusqueda",controllerGeneral.resultados) // en vez del controller redirige direct a el ejs
-
+router.get ("/register",controllerGeneral.registro) 
+router.get ("/editarPerfil",controllerGeneral.editarPerfil) 
+router.get ("/resultadosBusqueda/:producto",controllerGeneral.resultados)  
 
 
 module.exports = router;

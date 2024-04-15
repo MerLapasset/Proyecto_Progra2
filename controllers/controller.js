@@ -1,5 +1,5 @@
 const dataBase_info = require("../db/datos")
-const dataBase = dataBase_info.lista
+const dataBase = dataBase_info.lista 
 
 
 const controllers= {
@@ -36,7 +36,7 @@ const controllers= {
         
     },
     resultados: function (req,res) {
-        
+
 
 
 
