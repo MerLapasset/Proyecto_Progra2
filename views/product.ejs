@@ -24,10 +24,10 @@
 						<% for( let i = 0; i < comentarios.length; i++ ) { %>
 
 							<article>
-							<img src="<%= comentarios[i].imagenPerfil  %>" alt="">
+							<img src="<%= comentarios[i].imegenPerfil %>" alt="<%= comentarios[i].nombreProducto  %>">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html">Nombre usuario: <%= comentarios[i].nombreUsuarios  %></a> </strong>
+								<strong> <a href="profile.html">Nombre usuario: <%= comentarios[i].nombreUsuario  %></a> </strong> %>
 								</p>
 							</div>
 						</article>

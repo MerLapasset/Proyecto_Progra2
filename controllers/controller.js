@@ -7,8 +7,6 @@ const controllers= {
         console.log("database: ",dataBase_info.productos)
         let listaArticulos = []
 
-       
-        
         return res.render('index', {listaArticulos: dataBase_info.productos})
     },
    
@@ -34,16 +32,16 @@ const controllers= {
         let producto = []
         let comentarios = []
 
-        for (let i = 0; i < dataBase.productos.length; i++) {
+        for (let i = 0; i < dataBase_info.productos.length; i++) {
             
-            if (id == dataBase.productos[i].id) {
+            if (id == dataBase_info.productos[i].id) {
 
-                let valor = dataBase.productos[i]
+                let valor = dataBase_info.productos[i]
 
                 producto.push({
-                    nombreProducto: dataBase.productos[i].nombreProducto,
-                    descripcion: dataBase.productos[i].descripcion,
-                    imagen: dataBase.productos[i].imagen,
+                    nombreProducto: dataBase_info.productos[i].nombreProducto,
+                    descripcion: dataBase_info.productos[i].descripcion,
+                    imagen: dataBase_info.productos[i].imagen,
                 })
 
                 for (let i = 0; i < valor.comentarios.length; i++) {
@@ -55,6 +53,7 @@ const controllers= {
                         imagenPerfil: valor.comentarios[i].imagenPerfil,
                     }) 
                 }
+                console.log(comentarios);
             }
             
         }
