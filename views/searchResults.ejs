@@ -1,0 +1,47 @@
+<!-- Agrego el head que está en partials, así cuando modificamos info lo hacemos solo 1 vez. Cada vez que aparezca include es la misma lógica-->
+<%- include('./partials/head')  %>
+
+<body>
+    <!-- Header -->
+    <%- include('./partials/header') %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div>
+			<div class="col-12">
+				<h2 class="products-title">Los resultados de búsqueda son: </h2>
+			</div>
+			<% for( let i = 0; i < 1; i++ ) { %>
+			
+				<div class= >
+					<section class= "product-box">
+						<a href="/product">
+							<figure class="product-box_image"  >
+								<% if (listaProductos[i].imagen != '') { %>
+									<img src="<%= listaProductos[i].imagen  %>" alt="<%= listaProductos[i].nombreProducto  %>">
+								<% } else {%>
+									<img src="./images/users/default-image.png" alt="<%= listaProductos[i].nombreProducto  %>">
+								<% } %>
+							</figure>
+							<article class="product-box_data">
+								<h2><%= listaProductos[i].nombreProducto  %></h2>
+								<p><%= listaProductos[i].descripcion  %></p>
+								<p>Comentarios: <%= listaProductos[i].comentarios.length  %></p>
+							</article>
+						</a> 
+					</section>
+				</div>
+			
+			<% } %>
+			
+			
+			 
+	
+
+
+    <!-- footer -->
+    <%- include('./partials/footer') %>
+
+</body>
+
+</html>

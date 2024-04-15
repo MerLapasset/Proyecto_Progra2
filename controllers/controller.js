@@ -5,7 +5,6 @@ const dataBase_info = require("../db/datos")
 const controllers= {
     index: function (req,res) {
         console.log("database: ",dataBase_info.productos)
-        let listaArticulos = []
 
        
         
@@ -22,7 +21,8 @@ const controllers= {
         
     },
     resultados: function (req,res) {
-        return res.render ('search-results', )
+        
+        return res.render ('searchResults',{listaProductos: dataBase_info.productos} )
     },
 
     login: function (req,res) {
