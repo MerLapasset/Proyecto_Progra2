@@ -1,24 +1,15 @@
 const dataBase_info = require("../db/datos")
-const dataBase = dataBase_info.lista 
+
 
 
 const controllers= {
     index: function (req,res) {
+        console.log("database: ",dataBase_info.productos)
         let listaArticulos = []
 
-        for (let i = 0; i < dataBase.productos.length; i++) {
-            listaArticulos.push({
-                
-                id: dataBase.productos[i].id,
-                imagen: dataBase.productos[i].imagen,
-                nombreProducto: dataBase.productos[i].nombreProducto,
-                descripcion: dataBase.productos[i].descripcion,
-                numComentarios: dataBase.productos[i].comentarios.length
-                
-
-        })}
-        console.log(listaArticulos);
-        return res.render('index', {listaArticulos})
+       
+        
+        return res.render('index', {listaArticulos: dataBase_info.productos})
     },
    
     registro: function (req,res) {
