@@ -5,20 +5,32 @@
     <!-- Header -->
     <%- include('./partials/header') %>
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
+	<!-- Main -->
+	<div class="col-12">
+		<h2 class="registration-title">Ingresar</h2>
+	</div>
+	
+	<div class="container registration-container">
+		<form class="form registration-form" action="/login" method="GET">
+			<!-- Contenido del formulario -->
+			<div class="form-group">
+				<label for="usuario">Correo electrónico:</label>
+				<input type="email" id="usuario" name="usuario" placeholder="(tu mail)" required>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
-
+		
+			<div class="form-group">
+				<label for="password">Contraseña:</label>
+				<input type="password" id="password" name="password" placeholder="" required>
+			</div>
+		
+			<div class="form-group form-group--inline">
+				<label for="recordarme" class="recordarme-label">Recordarme</label>
+				<input type="checkbox" id="recordarme" name="recordarme" class="recordarme-checkbox">
+			</div>
+		
+			<button type="submit" class="submit-button">Ingresar</button>
+		</form>
+	</div>
 
 	<!-- footer -->
 	<%- include('./partials/footer') %>

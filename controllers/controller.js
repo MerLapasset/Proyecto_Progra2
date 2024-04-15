@@ -36,13 +36,12 @@ const controllers= {
         
     },
     resultados: function (req,res) {
-
-
-
-
-
         return res.render ('search-results', )
     },
+
+    login: function (req,res) {
+        return res.render ('login')
+    }
     
 
 }
