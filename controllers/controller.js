@@ -20,7 +20,7 @@ const controllers= {
         }
  
         console.log(listaArticulos);
-        return res.render(listaArticulos)
+        return res.render('index', {listaArticulos})
     },
    
     registro: function (req,res) {
