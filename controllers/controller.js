@@ -5,20 +5,16 @@ const controllers= {
         let listaArticulos = []
 
         for (let i = 0; i < dataBase.productos.length; i++) {
-
-            //console.log(dataBase.productos[i].nombreProducto);
-
             listaArticulos.push({
                 
                 id: dataBase.productos[i].id,
+                imagen: dataBase.productos[i].imagen,
                 nombreProducto: dataBase.productos[i].nombreProducto,
+                descripcion: dataBase.productos[i].descripcion,
+                numComentarios: dataBase.productos[i].comentarios.length
+                
 
-
-        })
-            
-            
-        }
- 
+        })}
         console.log(listaArticulos);
         return res.render('index', {listaArticulos})
     },
