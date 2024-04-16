@@ -8,9 +8,11 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= producto.nombreProducto  %></h2> 
+			
+			<h2 class="products-title"> <%=  producto.nombreProducto  %></h2> 
+
 			<p class="product-detail-description">
-				<a href="product-add.html">Editar</a>
+				<a href="/productAdd">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
@@ -22,13 +24,13 @@
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 						<% for( let i = 0; i < comentarios.length; i++ ) { %>
-
 							<article>
 							<img src="<%= comentarios[i].imegenPerfil %>" alt="<%= comentarios[i].nombreProducto  %>">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html">Nombre usuario: <%= comentarios[i].nombreUsuario  %></a> </strong> %>
+								<strong> <a href="/profile"> <%= comentarios[i].nombreUsuario  %></a> </strong> %> 
 								</p>
+								<p class="user"> <%= comentarios[i].comentario  %></p>
 							</div>
 						</article>
 						<% } %>

@@ -14,13 +14,13 @@ const controllers= {
    
     },
     editarPerfil: function (req,res) {
-        return res.render ('profile-edit')
+        return res.render ('profileEit')
    
         
     },
     resultados: function (req,res) {
         
-        return res.render ('searchResults',{listaProductos: dataBase_info.productos} )
+        return res.render ('searchResults', {listaProductos: dataBase_info.productos} )
     },
 
     login: function (req,res) {
@@ -60,7 +60,9 @@ const controllers= {
         let productoFiltrado = producto[0]
         console.log(comentarios);
         return res.render('product', {producto: productoFiltrado, comentarios})
-    }
+    },
+    addProduct: function (req,res) {
+        return res.render('productAdd') }
     
 
 }
