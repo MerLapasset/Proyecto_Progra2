@@ -1,4 +1,3 @@
-<!-- Agrego el head que está en partials, así cuando modificamos info lo hacemos solo 1 vez-->
 <%- include('./partials/head')  %>
  
 <body>
@@ -7,7 +6,7 @@
 	
 	<!-- Banner -->
 	<div class="banner">
-		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas">
+		<img src="images/img-home-banner.jpg" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 
@@ -16,67 +15,32 @@
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Novedades</h2>
+	
 			</div>
-			 <!-- Show the "ultimos" products --> <!-- Copiar un ejemplo del codigo y usarlo en un for de ejs, borrar el resto del codigo actual -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
+			 <!-- Show the "ultimos" products -->
+
+			<% for( let i = 0; i < listaArticulos.length; i++ ) { %>
+			
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/<%= listaArticulos[i].id %>">
+							<figure class="product-box_image">
+								<% if (listaArticulos[i].imagen != '') { %>
+									<img src="<%= listaArticulos[i].imagen  %>" alt="<%= listaArticulos[i].nombreProducto  %>">
+								<% } else {%>
+									<img src="./image/users/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
+								<% } %>
+							</figure>
+							<article class="product-box_data">
+								<h2><%= listaArticulos[i].nombreProducto  %></h2>
+								<p><%= listaArticulos[i].descripcion  %></p>
+								<p>Comentarios: <%= listaArticulos[i].numComentarios  %></p>
+							</article>
+						</a> 
+					</section>
+				</div>
+			
+			<% } %>
 		</div>
 	</div>
 	<!-- /Novedades -->
@@ -87,69 +51,41 @@
 				<h2 class="products-title">Más comentados</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
+			<% for( let i = 0; i < listaArticulos.length; i++ ) { %>
+			
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/<%= listaArticulos[i].id %>">
+							<figure class="product-box_image">
+								<% if (listaArticulos[i].imagen != '') { %>
+									<img src="<%= listaArticulos[i].imagen  %>" alt="<%= listaArticulos[i].nombreProducto  %>">
+								<% } else {%>
+									<img src="./image/user/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
+								<% } %>
+							</figure>
+							<article class="product-box_data">
+								<h2><%= listaArticulos[i].nombreProducto  %></h2>
+								<p><%= listaArticulos[i].descripcion  %></p>
+								<p>Comentarios: <%= listaArticulos[i].numComentarios  %></p>
+							</article>
+						</a> 
+					</section>
+				</div>
+			<% } %>
+			
 		</div>
 	</div>
 	<!-- /Más comentados -->
-
 
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 
 </body>	
 </html>
+
+
+<!-- FALTA
+	- Cambiar el href de la etiqueta a
+	- Cambiar la url de la imagen default de los productos
+	- Consultar al profesor: que poner en novedades y que en mas comentados
+-->
