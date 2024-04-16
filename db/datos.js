@@ -4,10 +4,10 @@ const informacion=
 
     {
         usuario: {
-            id: 1, //esta bien? 
-            numbreUs: "juana@gmail.com",
+            id: 1, 
+            nombreUs: "juana@gmail.com",
             nacimiento: "2005/04/24",
-            fotoPerfil: './images/users',
+            fotoPerfil: './images/users/image.png',
             contrasenia: 234567,
             dni: 34567234
          },

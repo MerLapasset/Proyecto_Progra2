@@ -2,7 +2,7 @@ const dataBase_info = require("../db/datos")
 
 
 
-const controllers= {
+const controllersproducts= {
     index: function (req,res) {
         console.log("database: ",dataBase_info.productos)
 
@@ -62,9 +62,15 @@ const controllers= {
         return res.render('product', {producto: productoFiltrado, comentarios})
     },
     productAdd: function (req,res) {
-        return res.render('productAdd') }
-    
+        return res.render('productAdd') 
+    },
 
+    misProductos: function(req, res) {
+        const productos = dataBase_info.productos; 
+        console.log (productos)
+        return res.render('miProductos', { productos}); 
+    },
+    
 }
 
-module.exports= controllers
+module.exports= controllersproducts
