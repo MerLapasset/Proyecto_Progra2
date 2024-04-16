@@ -25,20 +25,20 @@ const informacion=
                         id: 2,
                         nombreUsuario: "juanPerez",
                         comentario: "Obra maestra de Dostoievsky",
-                        imagenPerfil: './images/users/default-images.png' 
+                        imagenPerfil: './images/users/default-image.png' 
                     },
                     {
                         id: 3,
                         nombreUsuario: "lucianaGomez",
                         comentario: "Me encanto, recomiendo este libro a todo el mundo",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
 
                     },
                     {
                         id: 4,
                         nombreUsuario: "markelFernandez",
                         comentario: "Uno de los grandes autores de la literatura rusa",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
@@ -55,19 +55,19 @@ const informacion=
                         id: 5,
                         nombreUsuario: "anaMartinez",
                         comentario: "Una obra clásica que todos deberían leer",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 6,
                         nombreUsuario: "carlosGutierrez",
                         comentario: "Me emocionó hasta las lágrimas",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 7,
                         nombreUsuario: "lauraLopez",
                         comentario: "Victor Hugo es simplemente brillante",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
             },
@@ -82,19 +82,19 @@ const informacion=
                         id: 8,
                         nombreUsuario: "robertoSanchez",
                         comentario: "Una de las mejores obras de la literatura española",
-                        imagenPerfil: '../images/users/default-images.png'
+                        imagenPerfil: '../images/users/default-image.png'
                     },
                     {
                         id: 9,
                         nombreUsuario: "mariaGonzalez",
                         comentario: "Una lectura indispensable",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 10,
                         nombreUsuario: "jorgeRuiz",
                         comentario: "Cervantes nos regaló una obra maestra",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]   
             },
@@ -109,19 +109,19 @@ const informacion=
                         id: 11,
                         nombreUsuario: "saraRodriguez",
                         comentario: "Jane Austen es una autora increíble",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 12,
                         nombreUsuario: "manuelGarcia",
                         comentario: "Una novela clásica que nunca pasa de moda",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 33,
                         nombreUsuario: "julioGarcia",
                         comentario: "Tanto el libro como la pelicula son inolvidables",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
 
                     }
                 ]
@@ -138,19 +138,19 @@ const informacion=
                         id: 13,
                         nombreUsuario: "luisaFernandez",
                         comentario: "Un libro que te hace reflexionar sobre la sociedad",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 34,
                         nombreUsuario: "marianaLopez",
                         comentario: "Un clasico imperdible",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 31,
                         nombreUsuario: "bautistaRodriguez",
                         comentario: "Cada dia el mundo se parece mas a esta anti utopia",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
@@ -167,19 +167,19 @@ const informacion=
                         id: 17,
                         nombreUsuario: "lauraRodriguez",
                         comentario: "Una obra maestra que encanta tanto a niños como a adultos",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 18,
                         nombreUsuario: "marcosFernandez",
                         comentario: "Cada vez que leo El Principito, descubro algo nuevo",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 19,
                         nombreUsuario: "sofiaGutierrez",
                         comentario: "Una historia simple pero profundamente conmovedora",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
@@ -195,19 +195,19 @@ const informacion=
                         id: 21,
                         nombreUsuario: "luisGonzalez",
                         comentario: "Me mantuvo en vilo de principio a fin",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 22,
                         nombreUsuario: "mariaLopez",
                         comentario: "Un viaje emocionante por las calles de Barcelona",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 23,
                         nombreUsuario: "javierRuiz",
                         comentario: "Una obra maestra de la literatura contemporánea",
-                        imagenPerfil:'./images/users/default-images.png'
+                        imagenPerfil:'./images/users/default-image.png'
                     }
                 ]
 
@@ -225,19 +225,19 @@ const informacion=
                         id: 24,
                         nombreUsuario: "andreaMartinez",
                         comentario: "Una saga que marcó mi infancia",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 25,
                         nombreUsuario: "diegoGomez",
                         comentario: "JK Rowling creó un mundo mágico fascinante",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 26,
                         nombreUsuario: "sofiaSanchez",
                         comentario: "Me encantaría vivir en Hogwarts",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
@@ -253,19 +253,19 @@ const informacion=
                         id: 27,
                         nombreUsuario: "juanFernandez",
                         comentario: "Un libro que te hace reflexionar sobre tus sueños",
-                        imagenPerfil:'./images/users/default-images.png'
+                        imagenPerfil:'./images/users/default-image.png'
                     },
                     {
                         id: 28,
                         nombreUsuario: "lauraGutierrez",
                         comentario: "Paulo Coelho tiene una forma única de contar historias",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 29,
                         nombreUsuario: "carlosPerez",
                         comentario: "Una lectura que te llena de esperanza",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
@@ -281,19 +281,19 @@ const informacion=
                         id: 30,
                         nombreUsuario: "anaFernandez",
                         comentario: "Una historia que te transporta a otro mundo",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 31,
                         nombreUsuario: "lucasSanchez",
                         comentario: "CS Lewis creó un universo fascinante",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     },
                     {
                         id: 32,
                         nombreUsuario: "mariaRodriguez",
                         comentario: "Cada libro es una aventura emocionante",
-                        imagenPerfil: './images/users/default-images.png'
+                        imagenPerfil: './images/users/default-image.png'
                     }
                 ]
 
