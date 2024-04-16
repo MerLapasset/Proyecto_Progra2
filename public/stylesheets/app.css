@@ -272,8 +272,9 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--dark-blue); /* color de los títulos en products */
+  color: var(--gray); /* color de los títulos en products */
 }
+
 
 .product-box {
   background-color: #ffffff;
@@ -357,6 +358,16 @@ hr {
   transform: rotate(360deg);
   box-shadow: 0 0 5px var(--green);
 }
+
+/*====== Resultados ======*/
+
+.image-container {
+  display: block; /* Cambia a bloque para ocupar el ancho máximo disponible */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  text-align: center; /* Centra la imagen horizontalmente si es necesario */
+  max-width: 300px; /* Opcional: establece un ancho máximo para el contenedor */
+}
+
 
 /*====== Footer ======*/
 .main-footer {

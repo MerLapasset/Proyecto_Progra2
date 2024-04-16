@@ -9,16 +9,16 @@ const controllers= {
         return res.render('index', {listaArticulos: dataBase_info.productos})
     },
    
-    registro: function (req,res) {
+    register: function (req,res) {
         return res.render ('register')
    
     },
-    editarPerfil: function (req,res) {
-        return res.render ('profileEit')
+    profileEdit: function (req,res) {
+        return res.render ('profileEdit')
    
         
     },
-    resultados: function (req,res) {
+    searchResults: function (req,res) {
         
         return res.render ('searchResults', {listaProductos: dataBase_info.productos} )
     },
@@ -61,7 +61,7 @@ const controllers= {
         console.log(comentarios);
         return res.render('product', {producto: productoFiltrado, comentarios})
     },
-    addProduct: function (req,res) {
+    productAdd: function (req,res) {
         return res.render('productAdd') }
     
 

@@ -7,21 +7,24 @@
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
-		<div>
+		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Los resultados de búsqueda son: </h2>
 			</div>
+
 			<% for( let i = 0; i < 1; i++ ) { %>
 			
-				<div class= >
-					<section class= "product-box">
+				<div class= "col-12 col-sm-6 col-lg-3" >
+					<section class= "product-box" >
 						<a href="/product">
 							<figure class="product-box_image"  >
-								<% if (listaProductos[i].imagen != '') { %>
-									<img src="<%= listaProductos[i].imagen  %>" alt="<%= listaProductos[i].nombreProducto  %>">
-								<% } else {%>
-									<img src="./images/users/default-image.png" alt="<%= listaProductos[i].nombreProducto  %>">
-								<% } %>
+								<div class="image-container">
+									<% if (listaProductos[i].imagen != '') { %>
+										<img src="<%= listaProductos[i].imagen  %>" alt="<%= listaProductos[i].nombreProducto  %>" class="small-image">
+									<% } else {%>
+										<img src="./images/users/default-image.png" alt="<%= listaProductos[i].nombreProducto  %>" class="small-image">
+									<% } %>
+								</div>
 							</figure>
 							<article class="product-box_data">
 								<h2><%= listaProductos[i].nombreProducto  %></h2>
