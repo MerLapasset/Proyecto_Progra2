@@ -24,12 +24,12 @@
 			
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/<%= listaArticulos[i].id %>">
+						<a href="/product/<%= listaArticulos[i].id %>">
 							<figure class="product-box_image">
 								<% if (listaArticulos[i].imagen != '') { %>
 									<img src="<%= listaArticulos[i].imagen  %>" alt="<%= listaArticulos[i].nombreProducto  %>">
 								<% } else {%>
-									<img src="../public/images/users/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
+									<img src="./image/users/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
 								<% } %>
 							</figure>
 							<article class="product-box_data">
@@ -56,12 +56,12 @@
 			
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/<%= listaArticulos[i].id %>">
+						<a href="/product/<%= listaArticulos[i].id %>">
 							<figure class="product-box_image">
 								<% if (listaArticulos[i].imagen != '') { %>
 									<img src="<%= listaArticulos[i].imagen  %>" alt="<%= listaArticulos[i].nombreProducto  %>">
 								<% } else {%>
-									<img src="./images/users/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
+									<img src="./image/user/default-image.png" alt="<%= listaArticulos[i].nombreProducto  %>">
 								<% } %>
 							</figure>
 							<article class="product-box_data">

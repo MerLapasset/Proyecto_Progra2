@@ -4,7 +4,7 @@ let controllerGeneral= require ("../controllers/controllerProducto")
 let controllerUsuario= require ("../controllers/controllerUsuario")
 
 router.get ("/",controllerGeneral.index) 
-router.get("/producto/:id", controllerGeneral.producto)
+router.get("/product/:id", controllerGeneral.producto)
 
 
 router.get ("/register", controllerGeneral.register) 
