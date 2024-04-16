@@ -255,7 +255,7 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  padding: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -272,6 +272,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
+  padding-top: 30px;
   color: var(--gray); /* color de los títulos en products */
 }
 
