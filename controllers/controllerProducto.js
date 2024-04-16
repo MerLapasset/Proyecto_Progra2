@@ -8,24 +8,12 @@ const controllersproducts= {
 
         return res.render('index', {listaArticulos: dataBase_info.productos})
     },
-   
-    register: function (req,res) {
-        return res.render ('register')
-   
-    },
-    profileEdit: function (req,res) {
-        return res.render ('profileEdit')
-   
-        
-    },
+
     searchResults: function (req,res) {
         
         return res.render ('searchResults', {listaProductos: dataBase_info.productos} )
     },
 
-    login: function (req,res) {
-        return res.render ('login')
-    },
     
     producto: function(req, res){
         let id = req.params.id
@@ -63,12 +51,6 @@ const controllersproducts= {
     },
     productAdd: function (req,res) {
         return res.render('productAdd') 
-    },
-
-    misProductos: function(req, res) {
-        const productos = dataBase_info.productos; 
-        console.log (productos)
-        return res.render('miProductos', { productos}); 
     },
     
 }

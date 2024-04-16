@@ -13,7 +13,7 @@ router.get ("/profileEdit", controllerGeneral.profileEdit)
 router.get ("/searchResults", controllerGeneral.searchResults) 
 router.get ("/productAdd", controllerGeneral.productAdd) 
 
-router.get("/profile", controllerUsuario.profile, controllerGeneral.misProductos)
+router.get("/profile", controllerUsuario.profile)
 
 
 
