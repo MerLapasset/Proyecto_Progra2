@@ -26,6 +26,7 @@ const controllersproducts= {
                 let valor = dataBase_info.productos[i]
 
                 producto.push({
+                    id: dataBase_info.productos[i].id,
                     nombreProducto: dataBase_info.productos[i].nombreProducto,
                     descripcion: dataBase_info.productos[i].descripcion,
                     imagen: dataBase_info.productos[i].imagen,

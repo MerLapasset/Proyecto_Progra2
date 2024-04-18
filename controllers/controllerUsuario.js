@@ -22,6 +22,9 @@ const controllerUsusario= {
     login: function (req,res) {
         return res.render ('login')
     },
+    misProductos: function (req,res) {
+        return res.render ('login')
+    },
 
 
 
