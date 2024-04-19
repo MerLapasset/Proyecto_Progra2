@@ -91,7 +91,7 @@ hr {
 .main-header_credit-link,
 .left-navbar a,
 .right-navbar a {
-  color: #001f3f; /* color del texto a un azul muy oscuro */
+  color: #001f3f; 
 }
 
 .main-header_home-link,
@@ -372,7 +372,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: var(--dark-blue); /* color del pie de página */
+  background-color: var(--dark-blue); 
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -382,7 +382,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--orange); /* color de los iconitos */
+  color: var(--orange); 
   font-size: 3.5em;
 }
 
@@ -393,7 +393,7 @@ hr {
 }
 
 .footer-data p {
-  color: #fff; /* color en footer, mejora visibilidad */
+  color: #fff; 
   font-size: 1.5em;
   font-weight: 300;
 }

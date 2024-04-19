@@ -13,10 +13,12 @@ const controllerUsusario= {
         return res.render ('register')
    
     },
+
     profileEdit: function (req,res) {
-        return res.render ('profileEdit')
-   
-        
+        const usuario = dataBase_info.usuario;
+        const productos = dataBase_info.productos
+
+        return res.render ('profileEdit', { usuario, productos });       
     },
 
     login: function (req,res) {

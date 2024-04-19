@@ -16,6 +16,7 @@ const controllersproducts= {
 
     
     producto: function(req, res){
+        const usuario = dataBase_info.usuario;
         let id = req.params.id
         let producto = []
 
@@ -38,7 +39,8 @@ const controllersproducts= {
             
         }
         let productoFiltrado = producto[0]
-        return res.render('product', {producto: productoFiltrado})
+
+        return res.render('product', {producto: productoFiltrado, usuario})
     },
     
     productAdd: function (req,res) {
