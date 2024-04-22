@@ -60,6 +60,9 @@ a {
   text-decoration: none;
   color: var(--orange); /* Destaco los hipervínculos con color naranja */
 }
+a:hover {
+  color: var(--dark-blue) /* Cambio el color del enlace a azul cuando pasas el cursor por encima */
+}
 
 figure {
   margin: 0;
