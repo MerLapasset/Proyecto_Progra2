@@ -34,6 +34,28 @@ app.use(function(req, res, next){
   } 
   return next();
 })
+app.use(function(req, res, next){
+  //Solo quiero hacerlo si tengo una coockie
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    let idDeLaCookie = req.cookies.userId;
+    
+    db.User.findByPk(idDeLaCookie)
+    .then( user => {
+      //console.log('en cookie middleware trasladando');
+      req.session.user = user; //Estamos poniendo en session a toda la instancia del modelo. Debería ser solo user.dataValues.
+      //console.log('en cookie middleware');
+      //console.log(req.session.user);
+      res.locals.user = user; //Se corrije si usamos user.dataValues
+      return next();
+    })
+    .catch( e => {console.log(e)})
+  } else {
+    //Si no tengo cookie quiero que el programa continue
+    return next();
+  }
+
+})
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
