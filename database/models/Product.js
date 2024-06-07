@@ -1,6 +1,3 @@
-const { producto } = require("../../controllers/controllerProducto");
-const { usuario } = require("../../db/datos");
-
 module.exports= function (sequeize, dataTypes) {
     let alias= "Product";  //Este alias se busca como nombre en de la tabla en plural dentro de la base de datos.
     let cols= {
