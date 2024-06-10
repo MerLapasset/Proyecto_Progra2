@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 10-06-2024 a las 18:33:24
+-- Tiempo de generación: 10-06-2024 a las 19:13:44
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -97,16 +97,16 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `imagen`, `producto`, `descripcion`, `created_at`, `updated_at`, `deleted_at`, `usuario_id`) VALUES
-(1, 'foto.png', 'Crimen y Castigo', 'El libro narra tres historias que están superpuestas y entrelazadas en varios puntos. La trama principal es la historia del asesinato cometido por Raskólnikov y su arrepentimiento. Como tramas secundarias, aparecen la historia de vida y dolor de la familia Marmeladov y la vida de Dunia, la hermana de Raskólnikov', '2024-04-15 18:56:09', '2024-04-15 18:56:09', NULL, NULL),
-(2, 'foto2.png', 'Los Miserables', 'Una novela épica que sigue las vidas de varios personajes, especialmente el exconvicto Jean Valjean y el inspector de policía Javert, quienes se cruzan repetidamente en la Francia del siglo XIX.', '2024-04-15 18:57:48', '2024-04-15 18:57:48', NULL, NULL),
-(3, 'foto3.png', 'Don Quijote de la Mancha', 'La obra narra las aventuras de un hidalgo enloquecido por la lectura de libros de caballerías, quien decide hacerse caballero andante y partir en busca de aventuras.', '2024-04-15 18:58:40', '2024-04-15 18:58:40', NULL, NULL),
-(4, 'foto4.png', 'Orgullo y Prejuicio', 'Una historia de amor y prejuicios en la Inglaterra del siglo XIX, donde Elizabeth Bennet debe lidiar con sus propios prejuicios mientras navega por el mundo de los matrimonios arreglados.', '2024-04-15 18:59:34', '2024-04-15 18:59:34', NULL, NULL),
-(5, 'foto5.png', '1984', 'Una novela distópica que presenta un mundo bajo un régimen totalitario, donde la libertad individual está severamente restringida y la vigilancia es omnipresente.', '2024-04-15 19:00:10', '2024-04-15 19:00:10', NULL, NULL),
-(6, 'foto6.png', 'El principito', 'Un cuento poético que narra la historia de un joven príncipe que viaja de planeta en planeta, conociendo a diversos personajes que representan diferentes aspectos de la vida adulta.', '2024-04-15 19:01:09', '2024-04-15 19:01:09', NULL, NULL),
-(7, 'foto7.png', 'La sombra del viento', 'Una novela misteriosa que sigue la búsqueda de un joven llamado Daniel Sempere para descubrir la verdad detrás de un libro maldito llamado \'La Sombra del Viento\'.', '2024-04-15 19:01:59', '2024-04-15 19:01:59', NULL, NULL),
-(8, 'foto8.png', 'Harry Potter y la piedra filosofal', 'El primer libro de la serie Harry Potter, que narra las aventuras del joven mago Harry Potter mientras descubre su verdadera identidad en el mundo mágico.', '2024-04-15 19:02:43', '2024-04-15 19:02:43', NULL, NULL),
-(9, 'foto9.png', 'El alquimista', 'Una historia inspiradora sobre un joven pastor que emprende un viaje en busca de un tesoro y descubre el verdadero significado de la vida en el camino.', '2024-04-15 19:05:01', '2024-04-15 19:05:01', NULL, NULL),
-(10, 'foto10.png', 'Las Crónicas de Narnia: El León, la Bruja y el Armario', 'El primer libro en la serie de fantasía Las Crónicas de Narnia, que sigue a cuatro niños mientras descubren un mundo mágico detrás de un armario.', '2024-04-15 19:05:56', '2024-04-15 19:05:56', NULL, NULL);
+(1, 'foto.png', 'Crimen y Castigo', 'El libro narra tres historias que están superpuestas y entrelazadas en varios puntos. La trama principal es la historia del asesinato cometido por Raskólnikov y su arrepentimiento. Como tramas secundarias, aparecen la historia de vida y dolor de la familia Marmeladov y la vida de Dunia, la hermana de Raskólnikov', '2024-04-15 18:56:09', '2024-04-15 18:56:09', NULL, 1),
+(2, 'foto2.png', 'Los Miserables', 'Una novela épica que sigue las vidas de varios personajes, especialmente el exconvicto Jean Valjean y el inspector de policía Javert, quienes se cruzan repetidamente en la Francia del siglo XIX.', '2024-04-15 18:57:48', '2024-04-15 18:57:48', NULL, 4),
+(3, 'foto3.png', 'Don Quijote de la Mancha', 'La obra narra las aventuras de un hidalgo enloquecido por la lectura de libros de caballerías, quien decide hacerse caballero andante y partir en busca de aventuras.', '2024-04-15 18:58:40', '2024-04-15 18:58:40', NULL, 2),
+(4, 'foto4.png', 'Orgullo y Prejuicio', 'Una historia de amor y prejuicios en la Inglaterra del siglo XIX, donde Elizabeth Bennet debe lidiar con sus propios prejuicios mientras navega por el mundo de los matrimonios arreglados.', '2024-04-15 18:59:34', '2024-04-15 18:59:34', NULL, 3),
+(5, 'foto5.png', '1984', 'Una novela distópica que presenta un mundo bajo un régimen totalitario, donde la libertad individual está severamente restringida y la vigilancia es omnipresente.', '2024-04-15 19:00:10', '2024-04-15 19:00:10', NULL, 4),
+(6, 'foto6.png', 'El principito', 'Un cuento poético que narra la historia de un joven príncipe que viaja de planeta en planeta, conociendo a diversos personajes que representan diferentes aspectos de la vida adulta.', '2024-04-15 19:01:09', '2024-04-15 19:01:09', NULL, 6),
+(7, 'foto7.png', 'La sombra del viento', 'Una novela misteriosa que sigue la búsqueda de un joven llamado Daniel Sempere para descubrir la verdad detrás de un libro maldito llamado \'La Sombra del Viento\'.', '2024-04-15 19:01:59', '2024-04-15 19:01:59', NULL, 3),
+(8, 'foto8.png', 'Harry Potter y la piedra filosofal', 'El primer libro de la serie Harry Potter, que narra las aventuras del joven mago Harry Potter mientras descubre su verdadera identidad en el mundo mágico.', '2024-04-15 19:02:43', '2024-04-15 19:02:43', NULL, 4),
+(9, 'foto9.png', 'El alquimista', 'Una historia inspiradora sobre un joven pastor que emprende un viaje en busca de un tesoro y descubre el verdadero significado de la vida en el camino.', '2024-04-15 19:05:01', '2024-04-15 19:05:01', NULL, 5),
+(10, 'foto10.png', 'Las Crónicas de Narnia: El León, la Bruja y el Armario', 'El primer libro en la serie de fantasía Las Crónicas de Narnia, que sigue a cuatro niños mientras descubren un mundo mágico detrás de un armario.', '2024-04-15 19:05:56', '2024-04-15 19:05:56', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ INSERT INTO `usuarios` (`id`, `email`, `password`, `fecha`, `dni`, `foto`, `crea
 (3, 'may@gmail.com', '5jdt8', '2004-09-16', 27349123, 'may.png', '2024-04-15 18:52:01', '2024-04-15 18:52:01', NULL),
 (4, 'marki@gmail.com', 'hfttk', '2004-03-06', 45678123, 'marki.png', '2024-04-15 18:52:36', '2024-04-15 18:52:36', NULL),
 (5, 'lila@gmail.com', '46578', '2020-05-20', 67675123, 'lila.png', '2024-04-15 18:53:09', '2024-04-15 18:53:09', NULL),
-(6, 'lila@gmail.com', '46578', '2020-05-20', 67675123, 'lila.png', '2024-04-15 18:53:22', '2024-04-15 18:53:22', NULL);
+(6, 'lean@gmail.com', '46688', '2020-05-20', 67675123, 'lila.png', '2024-04-15 18:53:22', '2024-04-15 18:53:22', NULL);
 
 --
 -- Índices para tablas volcadas
