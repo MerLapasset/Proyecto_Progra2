@@ -1,4 +1,4 @@
-module.exports= function (sequeize, dataTypes) {
+module.exports= function (sequelize, dataTypes) {
     let alias= "Product";  //Este alias se busca como nombre en de la tabla en plural dentro de la base de datos.
     let cols= {
         id: {
@@ -37,7 +37,7 @@ module.exports= function (sequeize, dataTypes) {
         }); // por consiguiente un usuario has many () productosss 
         Product.hasMany(models.Comment, {
             as: "comment",
-            foreing_key: "usuario_id"
+            foreing_key: "producto_id"
         })
 
     }

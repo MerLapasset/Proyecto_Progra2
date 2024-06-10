@@ -1,4 +1,4 @@
-module.exports= function (sequeize, dataTypes) {
+module.exports= function (sequelize, dataTypes) {
     let alias = "User";
     let cols= {
         id: {
@@ -7,7 +7,7 @@ module.exports= function (sequeize, dataTypes) {
             type: dataTypes.INTEGER,
         },
         email: {
-            type: dataTypes.EMAIL,
+            type: dataTypes.STRING,
         },
         password: {
             type: dataTypes.STRING,
@@ -36,11 +36,11 @@ module.exports= function (sequeize, dataTypes) {
     Usuario.associate= function (models) {
         Usuario.hasMany(models.Product, {
             as: "producto",  //Como voy a llamar a la relación dentro del controlador
-            foreing_key: "producto_id"
+            foreing_key: "usuario_id"
         }); 
         Usuario.hasMany(models.Comment, {
             as: "comment",
-            foreing_key: "producto_id"
+            foreing_key: "usuario_id"
         })
 
     }

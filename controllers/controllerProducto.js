@@ -1,13 +1,27 @@
 const dataBase_info = require("../db/datos")
-
-
+const db = require("../database/models")
 
 const controllersproducts= {
-    index: function (req,res) {
-        console.log("database: ",dataBase_info.productos)
-
-        return res.render('index', {listaArticulos: dataBase_info.productos})
+    index: function (req, res) {
+        db.Product.findAll({
+            order: [['createdAt', 'DESC']],  
+            limit: 3,
+            include: [
+                { association: "usuario_id",
+                    include: [ {association: 'user'}]
+                }
+            ]
+        })
+        .then((products) => {
+            console.log("products", JSON.stringify(products,null,4))
+            return res.render('home', { products });
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        });
     },
+
 
     searchResults: function (req,res) {
         
