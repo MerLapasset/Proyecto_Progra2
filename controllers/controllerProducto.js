@@ -7,9 +7,8 @@ const controllersproducts= {
             order: [['createdAt', 'DESC']],  
             limit: 3,
             include: [
-                { association: "usuario_id",
-                    include: [ {association: 'user'}]
-                }
+                
+               { association: "user"}
             ]
         })
         .then((products) => {

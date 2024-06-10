@@ -1,51 +1,46 @@
-module.exports= function (sequelize, dataTypes) {
+module.exports = function (sequelize, DataTypes) {
     let alias = "User";
-    let cols= {
+    let cols = {
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
         },
         email: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         },
         password: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         },
         fecha: {
-            type: dataTypes.DATE,
+            type: DataTypes.DATE,
         },
         dni: {
-            type: dataTypes.INTEGER
+            type: DataTypes.INTEGER,
         },
         foto: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         }
-
     };
-    
+
     let config = {
-        tableName : "productos", 
-        timestamps:true, //Aclareción en caso de no explicitar created_at, deleted_at y updated_at --> si, (uptadeAt)
-        underscored: true, //Aclareción en caso que los timestamps usen guiones bajos en lugar de camelCase. --> si tenemos (usuario_id)
-
+        tableName: "usuarios",
+        timestamps: true,
+        underscored: true,
     };
 
-    const Usuario = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
 
-    Usuario.associate= function (models) {
-        Usuario.hasMany(models.Product, {
-            as: "producto",  //Como voy a llamar a la relación dentro del controlador
-            foreing_key: "usuario_id"
-        }); 
-        Usuario.hasMany(models.Comment, {
-            as: "comment",
-            foreing_key: "usuario_id"
-        })
-
+    User.associate = function (models) {
+        User.hasMany(models.Product, {
+            as: "products", // Alias para la relación
+            foreignKey: "usuario_id"
+        });
+        User.hasMany(models.Comment, {
+            as: "comments", // Alias para la relación
+            foreignKey: "usuario_id"
+        });
     }
-    return Usuario;
 
-
-
+    return User;
 }
