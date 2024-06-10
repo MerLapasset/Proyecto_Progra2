@@ -20,19 +20,6 @@ module.exports= function (sequeize, dataTypes) {
         },
         foto: {
             type: dataTypes.STRING,
-        },
-        createdAt: {
-            type: dataTypes.DATE, 
-            field: 'createdAt'
-        },
-        updatedAt:{
-            type: dataTypes.DATE, 
-            field: 'updatedAt'
-
-        },
-        deletedAt:{
-            type: dataTypes.DATE,
-            field: 'deletedAt'
         }
 
     };
@@ -41,9 +28,7 @@ module.exports= function (sequeize, dataTypes) {
         tableName : "productos", 
         timestamps:true, //Aclareción en caso de no explicitar created_at, deleted_at y updated_at --> si, (uptadeAt)
         underscored: true, //Aclareción en caso que los timestamps usen guiones bajos en lugar de camelCase. --> si tenemos (usuario_id)
-        createdAt: "created_at",
-        updatedAt: "updated_at",
-        deletedAt: "deleted_at"
+
     };
 
     const Usuario = sequelize.define(alias, cols, config);

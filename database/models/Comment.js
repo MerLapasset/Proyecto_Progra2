@@ -12,29 +12,13 @@ module.exports= function (sequeize, dataTypes) {
         producto_id: {
             type: dataTypes.INTEGER,
         },
-        updatedAt:{
-            type: dataTypes.DATE, 
-            field: 'updatedAt'
 
-        },
-        createdAt: {
-            type: dataTypes.DATE, 
-            field: 'createdAt'
-        },
-        deleteAt:{
-            type: dataTypes.DATE, 
-            field: 'deleteAt'
-
-        }
 
     }
     let config = {
         tableName : "comentarios", 
         timestamps:true,
         underscored: true,
-        createdAt: "created_at",
-        updatedAt: "updated_at",
-        deletedAt: "deleted_at"
     };
 
     const Comment = sequelize.define(alias, cols, config);
