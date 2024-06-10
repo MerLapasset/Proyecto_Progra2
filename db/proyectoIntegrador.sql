@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 10-06-2024 a las 18:18:59
+-- Tiempo de generación: 10-06-2024 a las 18:33:24
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyectoIntegrador`
 --
+CREATE DATABASE IF NOT EXISTS `proyectoIntegrador` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `proyectoIntegrador`;
 
 -- --------------------------------------------------------
 
