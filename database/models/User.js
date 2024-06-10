@@ -6,46 +6,35 @@ module.exports= function (sequeize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-
         email: {
             type: dataTypes.EMAIL,
         },
-
         password: {
             type: dataTypes.STRING,
         },
-
         fecha: {
             type: dataTypes.DATE,
         },
-
         dni: {
             type: dataTypes.INTEGER
         },
-
         foto: {
             type: dataTypes.STRING,
         },
-
         createdAt: {
             type: dataTypes.DATE, 
             field: 'createdAt'
         },
-
         updatedAt:{
             type: dataTypes.DATE, 
             field: 'updatedAt'
 
         },
-
         deletedAt:{
             type: dataTypes.DATE,
             field: 'deletedAt'
-        },
-
-        producto_id: {
-            type: dataTypes.INTEGER,
         }
+
     };
     
     let config = {

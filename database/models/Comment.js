@@ -20,6 +20,11 @@ module.exports= function (sequeize, dataTypes) {
         createdAt: {
             type: dataTypes.DATE, 
             field: 'createdAt'
+        },
+        deleteAt:{
+            type: dataTypes.DATE, 
+            field: 'deleteAt'
+
         }
 
     }
@@ -27,6 +32,9 @@ module.exports= function (sequeize, dataTypes) {
         tableName : "comentarios", 
         timestamps:true,
         underscored: true,
+        createdAt: "created_at",
+        updatedAt: "updated_at",
+        deletedAt: "deleted_at"
     };
 
     const Comment = sequelize.define(alias, cols, config);

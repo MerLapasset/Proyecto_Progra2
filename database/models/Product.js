@@ -28,8 +28,7 @@ module.exports= function (sequeize, dataTypes) {
             type: dataTypes.DATE, 
             field: 'deleteAt'
 
-        }
-
+        },
         usuario_id: {
             type: dataTypes.INTEGER,
         }
