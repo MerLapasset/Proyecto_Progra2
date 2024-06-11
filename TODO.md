@@ -3,7 +3,6 @@ Controller usuarios
 
 const Op = db.Sequelize.Op
 => esta linea de codigo se agrega para usar .like, .gt, .lt, .lte
----
 const db = require("../database/models);
 
 const usuarioController = {

@@ -6,6 +6,10 @@ module.exports= function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
+        comentario: {
+            type: dataTypes.STRING,
+
+        },
         usuario_id: {
             type: dataTypes.INTEGER,
         },
@@ -30,7 +34,7 @@ module.exports= function (sequelize, dataTypes) {
         });
         Comment.belongsTo(models.Product, {
             as: "product",
-            foreignKey: "product_id"
+            foreignKey: "producto_id"
         })
 
     }

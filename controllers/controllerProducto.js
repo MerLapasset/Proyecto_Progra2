@@ -29,36 +29,34 @@ const controllersproducts= {
 
     
     producto: function(req, res){
-        const usuario = dataBase_info.usuario;
-        let id = req.params.id
-        let producto = []
-
-        for (let i = 0; i < dataBase_info.productos.length; i++) {
-            
-            if (id == dataBase_info.productos[i].id) {
-
-                let valor = dataBase_info.productos[i]
-
-                producto.push({
-                    id: dataBase_info.productos[i].id,
-                    nombreProducto: dataBase_info.productos[i].nombreProducto,
-                    descripcion: dataBase_info.productos[i].descripcion,
-                    imagen: dataBase_info.productos[i].imagen,
-                    comentarios: dataBase_info.productos[i].comentarios
-                })
-
+        
+        const id = req.params.id
+        db.Product.findByPk(id,{
+            include: [
                 
-            }
-            
-        }
-        let productoFiltrado = producto[0]
+               { association: "user"},
+               { 
+                association: "comments",
+                include: { association: "user" } // Incluye la información del usuario en cada comentario
+            }            ]
+        })
+        .then((product) => {
+            console.log("product", JSON.stringify(product,null,4))
+            let lista_comentarios= product.comments
+            console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
 
-        return res.render('product', {producto: productoFiltrado, usuario})
+            return res.render('product', {product,lista_comentarios});
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        });
+
     },
     
     productAdd: function (req,res) {
         return res.render('productAdd') 
-    },
+    }
     
 }
 
