@@ -11,36 +11,41 @@
 	</div>
 
 	<div class="container registration-container">
-		<form class="form registration-form" action="/users/register" method="GET">
+		<form class="form registration-form" action="/users/register" method="POST", novalidate>
 			<!-- Contenido del formulario -->
 			<div class="form-group">
-				<label for="usuario">Usuario:</label>
-				<input type="text" id="usuario" name="usuario" placeholder="(tu nombre de usuario)" required>
-			</div>
-
-			<div class="form-group">
 				<label for="email">Correo electrónico:</label>
-				<input type="email" id="email" name="email" placeholder="(tu mail)" required>
+				<input type="email" id="email" name="email" placeholder="(tu mail)" value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
+				<% if (locals.errors && errors.email) { %>
+					<div class="error-msg">
+						<%= errors.email.msg %>                                
+					</div>                            
+				<% } %>  
 			</div>
 
 			<div class="form-group">
 				<label for="password">Contraseña:</label>
-				<input type="password" id="password" name="password" placeholder="" required>
+				<input type="password" id="password" name="password" placeholder="">
+				<% if (locals.errors && errors.password) { %>
+					<div class="error-msg">
+						<%= errors.password.msg %>                                
+					</div>                            
+				<% } %> 
 			</div>
 
 			<div class="form-group">
 				<label for="fechaNacimiento">Fecha de nacimiento:</label>
-				<input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+				<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<%= locals.oldData && oldData.fecha ? oldData.fecha : null %>">
 			</div>
 
 			<div class="form-group">
 				<label for="nroDocumento">Número de documento:</label>
-				<input type="number" id="nroDocumento" name="nroDocumento" required>
+				<input type="number" id="nroDocumento" name="nroDocumento" value="<%= locals.oldData && oldData.dni ? oldData.dni : null %>">
 			</div>
 
 			<div class="form-group">
 				<label for="fotoPerfil">Foto de Perfil:</label>
-				<input type="text" id="fotoPerfil" name="fotoPerfil" placeholder="url" required>
+				<input type="text" id="fotoPerfil" name="fotoPerfil" placeholder="url" value="<%= locals.oldData && oldData.foto ? oldData.foto : null %>">
 			</div>
 
 			<button type="submit" class="submit-button">Registrarse</button>

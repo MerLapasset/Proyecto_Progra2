@@ -52,9 +52,40 @@ const controllerUsusario= {
     },
 
        
-    register: function (req,res) {
-        return res.render ('register')
-   
+    register: {
+        index: function(req, res){
+            //Mostramos el form de login
+            return res.render('register')},
+        guardar: function(req, res){
+            //obtenemos los restultados de las validaciones       
+            const validationErrors = validationResult(req);
+            console.log("validationErrors : ", validationErrors)
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
+            if(!validationErrors.isEmpty()){
+                return res.render("register",{
+                    errors: validationErrors.mapped(),
+                    oldData:req.body
+                })
+            } 
+            // Guardar un usuario en la db
+            const user = {
+                email: req.body.email,
+                password: bcryptjs.hashSync(req.body.password), 
+                fecha: req.body.fechaNacimiento,
+                dni: req.body.nroDocumento,
+                foto: req.body.fotoPerfil
+            };
+            //creamos el usuario
+            dataBase_info.User
+                .create(user)
+                .then(function (user) {
+                    return res.redirect("/users/login");
+                })
+                .catch(function (err) {
+                    console.log("Error al guardar el usuario", err);
+                });            
+            },
+
     },
 
     profileEdit: function (req,res) {

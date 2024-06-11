@@ -69,3 +69,5 @@ findAll() => simpre trae un array
 findOne() => un solo objeto
 
 Denro de la tabla de comentarios, tengo que usar el id del usuario y con usuario_id me traigo todos sus comentarios
+
+licho@gmail.com password: Dolensky19! 
