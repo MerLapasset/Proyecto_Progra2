@@ -93,7 +93,14 @@ const controllerUsusario= {
         return res.render ('login')
     },
 
+    logout: function(req,res){
+        //Destruir la sessión
 
+        //Destruir la coockie
+        
+        //redireccionar a hone
+        return res.redirect('/')
+    }
 
 }
 
