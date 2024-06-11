@@ -13,15 +13,15 @@
 			</div>
 
 			<div class="container registration-container">
-				<form class="form registration-form" action="/productAdd" method="POST" novalidate>
+				<form class="form registration-form" action="/productAdd" method="POST", novalidate>
 					<div class="form-group">
 						<label for="productoImagen">Imagen del producto:</label>
 						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>">
 
 						
-						<% if (locals.imagen && errors.imagen) { %>
+						<% if (locals.errors && errors.productoImagen) { %>
 							<div class="error-msg">
-								<%= errors.imagen.msg %>                                
+								<%= errors.productoImagen.msg %>                                
 							</div>                            
 						<% } %> 
 					</div>
@@ -29,9 +29,9 @@
 					<div class="form-group">
 						<label for="nombreProducto">Nombre del producto:</label>
 						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.producto? oldData.producto: null%>" >
-						<% if (locals.producto && errors.producto) { %>
+						<% if (locals.errors && errors.nombreProducto) { %>
 							<div class="error-msg">
-								<%= errors.producto.msg %>                                
+								<%= errors.nombreProducto.msg %>                                
 							</div>                            
 						<% } %> 
 					</div>
@@ -40,9 +40,9 @@
 					<div class="form-group">
 						<label for="descripcion">Descripción:</label>
 						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto"   value="<%= locals.oldData && oldData.descripcion? oldData.descripcion: null%>">
-						<% if (locals.producto && errors.producto) { %>
+						<% if (locals.errors && errors.descripcion) { %>
 							<div class="error-msg">
-								<%= errors.producto.msg %>                                
+								<%= errors.descripcion.msg %>                                
 							</div>                            
 						<% } %> 
 					</div>
