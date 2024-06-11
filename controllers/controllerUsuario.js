@@ -81,8 +81,12 @@ const controllerUsusario= {
         })
         .then( function ( user ) {
             //Seteamos la session con la info del usuario
-                 
+            req.session.user = user;          
             //Si tildó recordame => creamos la cookie.
+            if(req.body.rememberme != undefined){
+                res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
+            }
+            return res.redirect('/');  
                       
         })
         .catch( function(e) {
