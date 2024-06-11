@@ -1,4 +1,6 @@
-const dataBase_info = require("../db/datos")
+const bcryptjs = require('bcryptjs');
+const dataBase_info = require("../database/models");
+const {validationResult} = require("express-validator");
 
 const controllerUsusario= {
     products: function(req,res){
@@ -62,8 +64,30 @@ const controllerUsusario= {
         return res.render ('profileEdit', { usuario, productos });       
     },
 
-    login: function (req,res) {
-        return res.render ('login')
+    login: function(req, res){
+        //obtenemos los restultados de las validaciones       
+        const validationErrors = validationResult(req);
+        console.log("validationErrors : ", validationErrors)
+        // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
+        if(!validationErrors.isEmpty()){
+            return res.render("login",{
+                errors: validationErrors.mapped(),
+                oldData:req.body
+            })
+        } 
+        // Buscamos el usuario que se quiere loguear.
+        dataBase_info.User.findOne({
+            where: [{email: req.body.email}]
+        })
+        .then( function ( user ) {
+            //Seteamos la session con la info del usuario
+                 
+            //Si tildó recordame => creamos la cookie.
+                      
+        })
+        .catch( function(e) {
+            console.log(e)
+        })
     },
     misProductos: function (req,res) {
         return res.render ('login')
