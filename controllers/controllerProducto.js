@@ -1,9 +1,9 @@
-const dataBase_info = require("../db/datos")
-const db = require("../database/models")
+const dataBase_info = require("../database/models")
+const {validationResult}= require ("express-validator")
 
 const controllersproducts= {
     index: function (req, res) {
-        db.Product.findAll({
+        dataBase_info.Product.findAll({
             order: [['createdAt', 'DESC']],  
             limit: 8,
             include: [
@@ -34,7 +34,7 @@ const controllersproducts= {
     producto: function(req, res){
         
         const id = req.params.id
-        db.Product.findByPk(id,{
+        dataBase_info.Product.findByPk(id,{
             include: [
                 
                { association: "user"},
@@ -57,9 +57,42 @@ const controllersproducts= {
 
     },
     
-    productAdd: function (req,res) {
-        return res.render('productAdd') 
-    }
+    productAdd:{
+        index: function(req, res){
+            
+            return res.render('productAdd')},
+        guardar: function(req, res){
+            //obtenemos los restultados de las validaciones       
+            const validationErrors = validationResult(req);
+            console.log("validationErrors : ", validationErrors)
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
+            if(!validationErrors.isEmpty()){
+                return res.render("productAdd",{
+                    errors: validationErrors.mapped(),
+                    oldData:req.body
+                })
+            } 
+            // Guardar un producto en la db
+            const producto = {
+                imagen: req.body.productoImagen,
+                producto:req.body.nombreProducto, 
+                descripcion: req.body.descripcion,
+
+            };
+            //creamos el producto
+            dataBase_info.Product
+                .create(producto)
+                .then(function (producto) {
+                    return res.redirect("/");
+                })
+                .catch(function (err) {
+                    console.log("Error al guardar el ", err);
+                });            
+            },
+
+    
+    } 
+    
     
 }
 

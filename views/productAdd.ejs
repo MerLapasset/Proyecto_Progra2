@@ -13,25 +13,46 @@
 			</div>
 
 			<div class="container registration-container">
-				<form class="form registration-form" action="/productAdd" method="GET">
+				<form class="form registration-form" action="/productAdd" method="POST" novalidate>
 					<div class="form-group">
 						<label for="productoImagen">Imagen del producto:</label>
-						<input type="file" id="productoImagen" name="productoImagen" required accept="image/*">
+						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>">
+
+						
+						<% if (locals.imagen && errors.imagen) { %>
+							<div class="error-msg">
+								<%= errors.imagen.msg %>                                
+							</div>                            
+						<% } %> 
 					</div>
 			
 					<div class="form-group">
 						<label for="nombreProducto">Nombre del producto:</label>
-						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto" required>
+						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.producto? oldData.producto: null%>" >
+						<% if (locals.producto && errors.producto) { %>
+							<div class="error-msg">
+								<%= errors.producto.msg %>                                
+							</div>                            
+						<% } %> 
 					</div>
+
 				
 					<div class="form-group">
 						<label for="descripcion">Descripción:</label>
-						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto" required></input>
+						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto"   value="<%= locals.oldData && oldData.descripcion? oldData.descripcion: null%>">
+						<% if (locals.producto && errors.producto) { %>
+							<div class="error-msg">
+								<%= errors.producto.msg %>                                
+							</div>                            
+						<% } %> 
 					</div>
 			
 					<button type="submit" class="submit-button">Agregar Producto</button>
 				</form>
 			</div>
+		</div>
+	</div>
+	
 
 
 	<!-- footer -->
