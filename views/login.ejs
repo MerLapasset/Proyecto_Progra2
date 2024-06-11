@@ -11,16 +11,27 @@
 	</div>
 	
 	<div class="container registration-container">
-		<form class="form registration-form" action="/users/login" method="GET">
+		<form class="form registration-form" action="/users/login" method="POST", novalidate>
 			<!-- Contenido del formulario -->
 			<div class="form-group">
 				<label for="usuario">Correo electrónico:</label>
-				<input type="email" id="usuario" name="usuario" placeholder="(tu mail)" required>
+				<input type="email" id="email" name="email" placeholder="(tu mail)" value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
+				<% if (locals.errors && errors.email) { %>
+					<div class="error-msg">
+						<%= errors.email.msg %>                                
+					</div>                            
+				<% } %>     
+
 			</div>
 		
 			<div class="form-group">
 				<label for="password">Contraseña:</label>
-				<input type="password" id="password" name="password" placeholder="" required>
+				<input type="password" id="password" name="password" placeholder="contraseña" >
+				<% if (locals.errors && errors.password) { %>
+					<div class="error-msg">
+						<%= errors.password.msg %>                                
+					</div>                            
+				<% } %>    
 			</div>
 		
 			<div class="form-group form-group--inline">
