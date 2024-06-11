@@ -5,15 +5,18 @@ const controllersproducts= {
     index: function (req, res) {
         db.Product.findAll({
             order: [['createdAt', 'DESC']],  
-            limit: 3,
+            limit: 8,
             include: [
                 
-               { association: "user"}
+               { association: "user"},
+               {association: "comments",
+                include: { association: "user" }
+               },
+
             ]
         })
-        .then((products) => {
-            console.log("products", JSON.stringify(products,null,4))
-            return res.render('home', { products });
+        .then((productos) => {
+            return res.render('index', { productos });
         })
         .catch((error) => {
             console.error(error);
@@ -41,9 +44,9 @@ const controllersproducts= {
             }            ]
         })
         .then((product) => {
-            console.log("product", JSON.stringify(product,null,4))
+            //console.log("product", JSON.stringify(product,null,4))
             let lista_comentarios= product.comments
-            console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
+            //console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
 
             return res.render('product', {product,lista_comentarios});
         })
