@@ -3,6 +3,7 @@ Controller usuarios
 
 const Op = db.Sequelize.Op
 => esta linea de codigo se agrega para usar .like, .gt, .lt, .lte
+---
 const db = require("../database/models);
 
 const usuarioController = {
@@ -51,7 +52,7 @@ const usuarioController = {
                 ["title", "DESC"] => Que columna queremos ordenar y si asendente o desendetnte
             ]
             ,
-            limit: 5 => limitas que se cargen 5 resultados (tambien esta offset)
+            limit: 5 => limitas que se cargen 5 resultados
         })
             .then(function(pelicula){
                 res.render("detallePelcula, {pelicula:pelicula})
@@ -65,9 +66,5 @@ const usuarioController = {
 ---
 IMPORTANTE
 
-findAll() => simpre trae un array
-findOne() => un solo objeto
 
 Denro de la tabla de comentarios, tengo que usar el id del usuario y con usuario_id me traigo todos sus comentarios
-
-licho@gmail.com password: Dolensky19! 
