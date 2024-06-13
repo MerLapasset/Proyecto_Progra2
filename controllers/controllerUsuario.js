@@ -1,48 +1,30 @@
 const bcryptjs = require('bcryptjs');
-const dataBase_info = require("../database/models");
+const db = require("../database/models");
 const {validationResult} = require("express-validator");
 
 const controllerUsusario= {
-    products: function(req,res){
-        db.Product.findAll({
-            where: {
-                usuario_id: req.params.id
-            }
-        })
-            .then(function(data){
-                return res.render("products", { profile: data });
-            })
-            .catch(function(error){
-                console.log(error);
-            });
-
-    },
+    
     profile: function(req, res){
-        db.User.findByPk(req.params.id)
+        db.User.findByPk(req.params.id, {
+
+            include: [
+                
+                {association: "products",
+                    include: { association: "comments" }
+                   },
+ 
+             ]
+        })
             .then(function(data){
-                return res.render("datosDelUsuario", { profile: data });
+                return res.render("profile", { profile: data });
             })
             .catch(function(error){
                 console.log(error);
             });
 
     },
-    comments: function(req,res){
-        db.Comment.findAll({
-            where: {
-                usuario_id: req.params.id
-            }
-        })
-            .then(function(data){
-                return res.render("products", { profile: data });
-            })
-            .catch(function(error){
-                console.log(error);
-            });
 
-    }, // ver esto y ponerlo en la vista 
-
-// Cambiar en la ruta por products y profile
+    // Parte vieja del proyecto
 
     profileEliminar: function(req, res) {
         const usuario = dataBase_info.usuario;

@@ -3,8 +3,7 @@
 
 <body>
     <!-- Header -->
-   <!--    %- include('./partials/headerlogueado')  %> 
-	habria que agregarle el header (lo saque pq sino no funcionaba) --> 
+   <%- include('./partials/headerlogueado')  %>
 
 	<!-- product detail -->
 	<div class="container products-wrapper">
@@ -32,7 +31,7 @@
 							<img src="/images/users/<%= lista_comentarios[i].user.foto %> "alt="<%= lista_comentarios[i].user.email  %>">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/users/profile"> <%= lista_comentarios[i].user.email  %></a> </strong> %> 
+								<strong> <a href="/users/profile/<%=  %>"> <%= lista_comentarios[i].user.email  %></a> </strong> %> 
 								</p>
 								<p class="user"> <%= lista_comentarios[i].comentario  %></p>
 							</div>

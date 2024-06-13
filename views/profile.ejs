@@ -10,11 +10,11 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= datosDelUsuario.foto %>" alt="foto de perfil" class="foto-perfil">
+				<img src="<%= profile.foto %>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center">
-					<h1 class="main-title"><%= usuario.email %>
+					<h1 class="main-title"><%= profile.email %>
 						<a href="/users/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -24,7 +24,7 @@
 
 				<div>
 					<ul class="">
-						<li><%= products.length %></li>
+						<li><%= profile.products.length %> productos</li>
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
 					</ul>
@@ -34,6 +34,7 @@
 	</section>
 	<!-- /Datos del usuario -->
 
+
 	<!-- Mis productos -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -41,17 +42,17 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Mostrar solo los primeros 8 productos -->
-			<% for (let i = 0; i < 8 && i < products.length; i++) { %>
+			<% for (let i = 0; i < 8 && i < profile.products.length; i++) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/<%= product.id %>">
+						<a href="/product/<%= profile.products.id %>">
 							<figure class="product-box_image">
-								<img src="<%= products[i].imagen %>" alt="<%= products[i].producto %>">
+								<img src="<%= profile.products[i].imagen %>" alt="<%= profile.products[i].producto %>">
 							</figure>
 							<article class="product-box_data">
-								<h2><%= products[i].producto %></h2>
-								<p><%= products[i].descripcion %></p>
-								<p>Comentarios: <%= products[i].comentarios.length %></p> 
+								<h2><%= profile.products[i].producto %></h2>
+								<p><%= profile.products[i].descripcion %></p>
+								<p>Comentarios: <%= profile.products[i].comments.length %></p>
 							</article>
 						</a>
 					</section>
