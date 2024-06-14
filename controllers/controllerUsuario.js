@@ -27,8 +27,8 @@ const controllerUsusario= {
     // Parte vieja del proyecto
 
     profileEliminar: function(req, res) {
-        const usuario = dataBase_info.usuario;
-        const productos = dataBase_info.productos
+        const usuario = db.usuario;
+        const productos = db.productos
     
         return res.render('profile', { usuario, productos });
     },
@@ -36,7 +36,7 @@ const controllerUsusario= {
        
     register: {
         index: function(req, res){
-            //Mostramos el form de login
+            //Mostramos el form de 
             return res.render('register')},
         guardar: function(req, res){
             //obtenemos los restultados de las validaciones       
@@ -58,7 +58,7 @@ const controllerUsusario= {
                 foto: req.body.fotoPerfil
             };
             //creamos el usuario
-            dataBase_info.User
+            db.User
                 .create(user)
                 .then(function (user) {
                     return res.redirect("/users/login");
@@ -71,20 +71,21 @@ const controllerUsusario= {
     },
 
     profileEdit: function (req,res) {
-        const usuario = dataBase_info.usuario;
-        const productos = dataBase_info.productos
+        const usuario = db.usuario;
+        const productos = db.productos
 
         return res.render ('profileEdit', { usuario, productos });       
     },
 
     login:{
-        index: function(req, res){
-            //Mostramos el form de login
-            return res.render('login')},
+        index: function(req, res) {
+            console.log("Rendering login page");  // Añade este log para verificar
+            return res.render('login');
+        },
         general: function(req, res){
             //obtenemos los restultados de las validaciones       
             const validationErrors = validationResult(req);
-            console.log("validationErrors : ", validationErrors)
+            //console.log("validationErrors : ", validationErrors)
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
             if(!validationErrors.isEmpty()){
                 return res.render("login",{
@@ -93,7 +94,7 @@ const controllerUsusario= {
                 })
             } 
             // Buscamos el usuario que se quiere loguear.
-            dataBase_info.User.findOne({
+            db.User.findOne({
                 where: [{email: req.body.email}]
             })
             .then( function ( user ) {
@@ -119,15 +120,19 @@ const controllerUsusario= {
         return res.render ('login')
     },
 
-    logout: function(req,res){
-        //Destruir la sessión
-
-        //Destruir la coockie
-        
-        //redireccionar a hone
-        return res.redirect('/')
-    }
-
+    logout: function(req, res) {
+        // Destruir la sesión
+        req.session.destroy(err => {
+            if (err) {
+                console.log(err);
+                return res.redirect('/');
+            }
+            // Destruir la cookie
+            res.clearCookie('userId');
+            // Redireccionar a la página de inicio
+            return res.redirect('/');
+        });
+    },
 }
 
 module.exports = controllerUsusario
