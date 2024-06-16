@@ -1,5 +1,7 @@
+const { where } = require("sequelize");
 const dataBase_info = require("../database/models")
 const {validationResult}= require ("express-validator")
+const Op= dataBase_info.Sequelize.Op;
 
 const controllersproducts= {
     index: function (req, res) {
@@ -27,9 +29,28 @@ const controllersproducts= {
 
     searchResults: function (req,res) {
         
-        return res.render ('searchResults', {listaProductos: dataBase_info.productos} )
+        const buscador = req.query.search;
+        dataBase_info.Product.findAll({
+            where:{
+                [Op.or]:[
+                    {producto: {[Op.like]: `%${buscador}%`}},
+                    {descripcion: {[Op.like]: `%${buscador}%`}},                    
+                ]
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ],
+            include: {
+                association: "user"
+            }
+        }).then(function(search){
+            return res.render("searchResults", {Product:search, buscador})
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     },
-
+    
     
     producto: function(req, res){
         

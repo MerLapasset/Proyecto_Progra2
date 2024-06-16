@@ -13,12 +13,23 @@
 	<div class="container registration-container">
 		<form class="form registration-form" action="/users/register" method="POST", novalidate>
 			<!-- Contenido del formulario -->
+
 			<div class="form-group">
 				<label for="email">Correo electrónico:</label>
 				<input type="email" id="email" name="email" placeholder="(tu mail)" value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
 				<% if (locals.errors && errors.email) { %>
 					<div class="error-msg">
 						<%= errors.email.msg %>                                
+					</div>                            
+				<% } %>  
+			</div>
+
+			<div class="form-group">
+				<label for="name">Nombre de usuario:</label>
+				<input type="text" id="name" name="name" placeholder="(tu nombre)" value="<%= locals.oldData && oldData.name ? oldData.name : null %>">
+				<% if (locals.errors && errors.name) { %>
+					<div class="error-msg">
+						<%= errors.name.msg %>                                
 					</div>                            
 				<% } %>  
 			</div>

@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session'); //Configurando session
+const db = require('./database/models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,27 +35,29 @@ app.use(function(req, res, next){
   } 
   return next();
 })
-app.use(function(req, res, next){
-  //Solo quiero hacerlo si tengo una coockie
-  if(req.cookies.userId != undefined && req.session.user == undefined){
+
+app.use(function(req, res, next) {
+  if (req.cookies.userId && !req.session.user) {
     let idDeLaCookie = req.cookies.userId;
     
     db.User.findByPk(idDeLaCookie)
-    .then( user => {
-      //console.log('en cookie middleware trasladando');
-      req.session.user = user; //Estamos poniendo en session a toda la instancia del modelo. Debería ser solo user.dataValues.
-      //console.log('en cookie middleware');
-      //console.log(req.session.user);
-      res.locals.user = user; //Se corrije si usamos user.dataValues
-      return next();
-    })
-    .catch( e => {console.log(e)})
+      .then(user => {
+        if (user) {
+          req.session.user = user;
+          res.locals.user = user;
+        }
+        return next();
+      })
+      .catch(e => {
+        console.log(e);
+        return next();
+      });
   } else {
-    //Si no tengo cookie quiero que el programa continue
     return next();
   }
+});
 
-})
+
 
 
 app.use('/', indexRouter);

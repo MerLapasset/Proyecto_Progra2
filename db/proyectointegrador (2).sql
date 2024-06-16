@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:8889
--- Tiempo de generación: 11-06-2024 a las 02:10:27
--- Versión del servidor: 5.7.39
--- Versión de PHP: 7.4.33
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-06-2024 a las 22:51:05
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,10 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyectoIntegrador`
+-- Base de datos: `proyectointegrador`
 --
-CREATE DATABASE IF NOT EXISTS `proyectoIntegrador` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `proyectoIntegrador`;
 
 -- --------------------------------------------------------
 
@@ -34,10 +32,10 @@ CREATE TABLE `comentarios` (
   `comentario` varchar(500) NOT NULL,
   `usuario_id` int(10) UNSIGNED DEFAULT NULL,
   `producto_id` int(10) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `comentarios`
@@ -86,11 +84,11 @@ CREATE TABLE `productos` (
   `imagen` varchar(100) DEFAULT NULL,
   `producto` varchar(100) NOT NULL,
   `descripcion` varchar(1500) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL,
   `usuario_id` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -121,22 +119,24 @@ CREATE TABLE `usuarios` (
   `fecha` date DEFAULT NULL,
   `dni` int(11) DEFAULT NULL,
   `foto` varchar(500) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `password`, `fecha`, `dni`, `foto`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'juana@gmail.com', '33456', '2005-04-24', 23456789, 'foto.png', '2024-04-15 18:50:24', '2024-04-15 18:50:24', NULL),
-(2, 'mer@gmail.com', '45678', '2004-12-30', 35678123, 'foto.png', '2024-04-15 18:51:23', '2024-04-15 18:51:23', NULL),
-(3, 'may@gmail.com', '5jdt8', '2004-09-16', 27349123, 'foto.png', '2024-04-15 18:52:01', '2024-04-15 18:52:01', NULL),
-(4, 'marki@gmail.com', 'hfttk', '2004-03-06', 45678123, 'foto.png', '2024-04-15 18:52:36', '2024-04-15 18:52:36', NULL),
-(5, 'lila@gmail.com', '46578', '2020-05-20', 67675123, 'foto.png', '2024-04-15 18:53:09', '2024-04-15 18:53:09', NULL),
-(6, 'lean@gmail.com', '46688', '2020-05-20', 67675123, 'foto.png', '2024-04-15 18:53:22', '2024-04-15 18:53:22', NULL);
+INSERT INTO `usuarios` (`id`, `email`, `password`, `fecha`, `dni`, `foto`, `created_at`, `updated_at`, `deleted_at`, `name`) VALUES
+(1, 'juana@gmail.com', '33456', '2005-04-24', 23456789, 'foto.png', '2024-04-15 18:50:24', '2024-04-15 18:50:24', NULL, 'Juana'),
+(2, 'mer@gmail.com', '45678', '2004-12-30', 35678123, 'foto.png', '2024-04-15 18:51:23', '2024-04-15 18:51:23', NULL, 'Mer'),
+(3, 'piero@gmail.com', '5jdt8', '2004-09-16', 27349123, 'foto.png', '2024-04-15 18:52:01', '2024-04-15 18:52:01', NULL, 'Piero'),
+(4, 'marki@gmail.com', 'hfttk', '2004-03-06', 45678123, 'foto.png', '2024-04-15 18:52:36', '2024-04-15 18:52:36', NULL, 'Marki'),
+(5, 'lila@gmail.com', '46578', '2020-05-20', 67675123, 'foto.png', '2024-04-15 18:53:09', '2024-04-15 18:53:09', NULL, 'Lila'),
+(6, 'lean@gmail.com', '46688', '2020-05-20', 67675123, 'foto.png', '2024-04-15 18:53:22', '2024-04-15 18:53:22', NULL, 'Lean'),
+(7, 'maiadolensky@gmail.com', '$2a$10$xQee7pytASmMtQKf8zglKu75oHhx6m8xHqNz8EYTLAfifXDalE7oe', '2004-05-15', 4455667, 'perfil.png', '2024-06-14 15:26:01', '2024-06-14 15:26:01', NULL, 'Maia');
 
 --
 -- Índices para tablas volcadas
@@ -183,7 +183,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

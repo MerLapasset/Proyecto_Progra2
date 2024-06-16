@@ -14,4 +14,6 @@ router.post('/login', loginValidation, controllerUsuario.login.general);
 router.get ("/profileEdit", controllerUsuario.profileEdit); 
 router.get("/profile/:id", controllerUsuario.profile,);
 
+router.post('/logout', controllerUsuario.logout);
+
 module.exports = router;

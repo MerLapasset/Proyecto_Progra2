@@ -36,8 +36,12 @@ const controllerUsusario= {
        
     register: {
         index: function(req, res){
-            //Mostramos el form de 
-            return res.render('register')},
+            if (req.session.user != undefined){
+                return res.redirect ("/")
+            } else{
+                return res.render("register")
+            }
+        },    
         guardar: function(req, res){
             //obtenemos los restultados de las validaciones       
             const validationErrors = validationResult(req);
@@ -52,6 +56,7 @@ const controllerUsusario= {
             // Guardar un usuario en la db
             const user = {
                 email: req.body.email,
+                name: req.body.name,
                 password: bcryptjs.hashSync(req.body.password), 
                 fecha: req.body.fechaNacimiento,
                 dni: req.body.nroDocumento,
@@ -79,8 +84,11 @@ const controllerUsusario= {
 
     login:{
         index: function(req, res) {
-            console.log("Rendering login page");  // Añade este log para verificar
-            return res.render('login');
+            if (req.session.user != undefined){
+                return res.redirect ("/")
+            } else{
+                return res.render("login")
+            }      
         },
         general: function(req, res){
             //obtenemos los restultados de las validaciones       
@@ -101,11 +109,12 @@ const controllerUsusario= {
                 //Seteamos la session con la info del usuario
                 req.session.user = user;          
                 //Si tildó recordame => creamos la cookie.
-                if(req.body.rememberme != undefined){
+                if(req.body.recordarme === "ok"){
                     res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
+                } else {
+                    res.clearCookie("userId")
                 }
-                return res.redirect('/');  
-                          
+                return res.redirect('/');                           
             })
             .catch( function(e) {
                 console.log(e)
@@ -121,17 +130,14 @@ const controllerUsusario= {
     },
 
     logout: function(req, res) {
-        // Destruir la sesión
-        req.session.destroy(err => {
-            if (err) {
-                console.log(err);
-                return res.redirect('/');
-            }
-            // Destruir la cookie
-            res.clearCookie('userId');
-            // Redireccionar a la página de inicio
-            return res.redirect('/');
-        });
+        //Destruir la sessión
+        req.session.destroy();
+
+        //Destruir la coockie
+        res.clearCookie("userId");
+
+        //redireccionar a home
+        res.redirect("/");
     },
 }
 

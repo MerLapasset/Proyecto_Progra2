@@ -3,7 +3,12 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %> <!-- Queda solo header x ms Slack 04/16 -->
+	<% if(locals.user){%>
+		<%- include('./partials/headerlogueado') %>
+
+	<% }else{ %>
+		<%- include('./partials/header') %>
+	<% } %>
 	
 	<!-- Novedades -->
 	<div class="container products-wrapper">

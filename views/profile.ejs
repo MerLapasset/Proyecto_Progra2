@@ -3,7 +3,12 @@
 
 <body>
 	<!-- Header -->
-    <%- include('./partials/headerlogueado') %>
+    <% if(locals.user){%>
+		<%- include('./partials/headerlogueado') %>
+
+	<% }else{ %>
+		<%- include('./partials/header') %>
+	<% } %>
 
 
 <!-- Datos del usuario -->
