@@ -9,11 +9,9 @@ const controllerUsusario= {
 
             include: [
                 
-                {
-                    association: "products",
+                {association: "products",
                     include: { association: "comments" },
                     order: [['createdAt', 'DESC']]
-                    
                    },
  
              ]
