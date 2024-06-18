@@ -52,36 +52,93 @@ const controllersproducts= {
     },
     
     
-    producto: function(req, res){
+    producto: {
+
+        index: function(req, res){
         
-        const id = req.params.id
-        dataBase_info.Product.findByPk(id,{
-            include: [
-                
-               { association: "user"},
-               { 
-                association: "comments",
-                include: { association: "user" } // Incluye la información del usuario en cada comentario
-            }            ]
-        })
-        .then((product) => {
-            //console.log("product", JSON.stringify(product,null,4))
-            let lista_comentarios= product.comments
-            //console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
-
-            return res.render('product', {product,lista_comentarios});
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send('Internal Server Error');
-        });
-
+            const id = req.params.id
+            dataBase_info.Product.findByPk(id,{
+                include: [
+                    
+                   { association: "user"},
+                   { 
+                    association: "comments",
+                    include: { association: "user" } // Incluye la información del usuario en cada comentario
+                }            ]
+            })
+            .then((product) => {
+                //console.log("product", JSON.stringify(product,null,4))
+                let lista_comentarios= product.comments
+                //console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
+    
+                return res.render('product', {product,lista_comentarios});
+            })
+            .catch((error) => {
+                console.error(error);
+                res.status(500).send('Internal Server Error');
+            });
+    
+        },
+        borrar: function (req, res) {
+            let libroABorrar = req.params.id;
+    
+            dataBase_info.Product.destroy({
+                where: [
+                    { id: libroABorrar }
+                ]
+            })
+                .then(() => {
+                    return res.redirect('/');
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     },
+
+    editarProducto: {
+
+        index: function (req, res) {
+            const id = req.params.id;
+            dataBase_info.Product.findByPk(id)
+                .then(function (producto) {
+                    if (!producto) {
+                        return res.status(404).send("Producto no encontrado")
+                    }
+                    res.render ("productEdit", {producto: producto})
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
+        },
+        //ahora update
+        modificar: function (req, res) {
+            const id = req.params.id;
+            const movie = req.body;
+            db.Movie.update(movie, {
+                where: {
+                    id: id
+                }
+            })
+                .then(function (result) {
+                    return res.redirect(`/movies/detail/${id}`)
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
+        },
+    },
+
+    
     
     productAdd:{
-        index: function(req, res){
-            
-            return res.render('productAdd')},
+        index: function(req, res) {
+            if (req.session.user == !undefined){
+                return res.redirect ("/")
+            } else{
+                return res.render("productAdd")
+            }      
+        },
         guardar: function(req, res){
             //obtenemos los restultados de las validaciones       
             const validationErrors = validationResult(req);
@@ -93,13 +150,20 @@ const controllersproducts= {
                     oldData:req.body
                 })
             } 
+            let usuarioLogueadoId= req.session.user.id
+
+            //console.log("usuario logueado", JSON.stringify(usuarioLogueadoId,null,4))
+            
             // Guardar un producto en la db
             const producto = {
                 imagen: req.body.productoImagen,
                 producto:req.body.nombreProducto, 
                 descripcion: req.body.descripcion,
+                usuario_id: usuarioLogueadoId
 
             };
+            //console.log("producto", JSON.stringify(producto,null,4))
+
             //creamos el producto
             dataBase_info.Product
                 .create(producto)

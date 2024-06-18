@@ -13,12 +13,20 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"> <%=  product.producto  %></h2> 		
+			<h2 class="products-title"> <%=  product.producto  %></h2> 	
+			
+			<% if(locals.user.id == product.user.id){%>
+				 <p class="product-detail-description">
+				<a href="/productEdit/<%= product.id%>">Editar</a>
+				</p>
+				<form action="/product/<%= product.id %>" method="POST">
+					<button class="logout" type="submit">
+						Borrar producto <i class="fas fa-sign-in-alt"></i>
+					</button>
+				</form>
+				 <% } %>
 
-			<p class="product-detail-description">
-				<a href="/productAdd">Editar</a>
-			</p>	
-
+			
 		</div>
 
 		<div class="product-detail">

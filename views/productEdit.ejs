@@ -1,0 +1,67 @@
+<%- include('./partials/head')  %>
+
+<body>
+	<!-- Header -->
+	<% if(locals.user){%>
+		<%- include('./partials/headerlogueado') %>
+
+	<% }else{ %>
+		<%- include('./partials/header') %>
+	<% } %>
+	
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Agregar productos</h2>
+			</div>
+
+			<div class="container registration-container">
+				<form class="form registration-form" action="/productAdd" method="POST", novalidate>
+					<div class="form-group">
+						<label for="productoImagen">Imagen del producto:</label>
+						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>">
+
+						
+						<% if (locals.errors && errors.productoImagen) { %>
+							<div class="error-msg">
+								<%= errors.productoImagen.msg %>                                
+							</div>                            
+						<% } %> 
+					</div>
+			
+					<div class="form-group">
+						<label for="nombreProducto">Nombre del producto:</label>
+						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.producto? oldData.producto: null%>" >
+						<% if (locals.errors && errors.nombreProducto) { %>
+							<div class="error-msg">
+								<%= errors.nombreProducto.msg %>                                
+							</div>                            
+						<% } %> 
+					</div>
+
+				
+					<div class="form-group">
+						<label for="descripcion">Descripción:</label>
+						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto"   value="<%= locals.oldData && oldData.descripcion? oldData.descripcion: null%>">
+						<% if (locals.errors && errors.descripcion) { %>
+							<div class="error-msg">
+								<%= errors.descripcion.msg %>                                
+							</div>                            
+						<% } %> 
+					</div>
+			
+					<button type="submit" class="submit-button">Agregar Producto</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<!-- footer -->
+	<%- include('./partials/footer') %>
+    
+</body>
+
+</html>

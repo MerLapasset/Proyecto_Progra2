@@ -9,7 +9,6 @@ router.get ("/register", controllerUsuario.register.index) ;
 router.post("/register", registerValidation, controllerUsuario.register.guardar);
 
 router.get ("/login", controllerUsuario.login.index); 
-
 router.post('/login', loginValidation, controllerUsuario.login.general);
 router.get ("/profileEdit", controllerUsuario.profileEdit); 
 router.get("/profile/:id", controllerUsuario.profile,);
