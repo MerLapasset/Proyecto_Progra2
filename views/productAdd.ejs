@@ -21,7 +21,7 @@
 				<form class="form registration-form" action="/productAdd" method="POST", novalidate>
 					<div class="form-group">
 						<label for="productoImagen">Imagen del producto:</label>
-						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>">
+						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.productoImagen ? oldData.productoImagen : null %>">
 
 						
 						<% if (locals.errors && errors.productoImagen) { %>
@@ -33,7 +33,7 @@
 			
 					<div class="form-group">
 						<label for="nombreProducto">Nombre del producto:</label>
-						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.producto? oldData.producto: null%>" >
+						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.nombreProducto? oldData.nombreProducto: null%>" >
 						<% if (locals.errors && errors.nombreProducto) { %>
 							<div class="error-msg">
 								<%= errors.nombreProducto.msg %>                                

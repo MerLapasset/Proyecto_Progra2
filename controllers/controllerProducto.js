@@ -113,15 +113,30 @@ const controllersproducts= {
         },
         //ahora update
         modificar: function (req, res) {
+            const validationErrors = validationResult(req);
+            console.log("validationErrors : ", validationErrors)
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
+            if(!validationErrors.isEmpty()){
+                return res.render("productEdit",{
+                    errors: validationErrors.mapped(),
+                    oldData:req.body
+                })
+            } 
+                      
             const id = req.params.id;
-            const movie = req.body;
-            db.Movie.update(movie, {
+            
+            dataBase_info.Product.update(
+                {
+                imagen: req.body.productoImagen,
+                producto: req.body.nombreProducto, 
+                descripcion: req.body.descripcion},
+                 {
                 where: {
                     id: id
                 }
             })
                 .then(function (result) {
-                    return res.redirect(`/movies/detail/${id}`)
+                    return res.redirect(`/product/${id}`)
                 })
                 .catch(function (err) {
                     console.log(err)
@@ -157,7 +172,7 @@ const controllersproducts= {
             // Guardar un producto en la db
             const producto = {
                 imagen: req.body.productoImagen,
-                producto:req.body.nombreProducto, 
+                producto: req.body.nombreProducto, 
                 descripcion: req.body.descripcion,
                 usuario_id: usuarioLogueadoId
 

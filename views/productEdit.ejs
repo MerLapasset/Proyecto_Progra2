@@ -13,14 +13,14 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
+				<h2 class="products-title">Edita tu producto</h2>
 			</div>
 
 			<div class="container registration-container">
-				<form class="form registration-form" action="/productAdd" method="POST", novalidate>
+				<form class="form registration-form" action="/editarProducto/<%= producto.id %>" method="POST", novalidate>
 					<div class="form-group">
 						<label for="productoImagen">Imagen del producto:</label>
-						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : null %>">
+						<input type="text" id="text" name="productoImagen" placeholder="(imagen)" value="<%= producto.imagen %>">
 
 						
 						<% if (locals.errors && errors.productoImagen) { %>
@@ -32,7 +32,7 @@
 			
 					<div class="form-group">
 						<label for="nombreProducto">Nombre del producto:</label>
-						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= locals.oldData && oldData.producto? oldData.producto: null%>" >
+						<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Nombre del producto"  value="<%= producto.producto%>" >
 						<% if (locals.errors && errors.nombreProducto) { %>
 							<div class="error-msg">
 								<%= errors.nombreProducto.msg %>                                
@@ -43,7 +43,7 @@
 				
 					<div class="form-group">
 						<label for="descripcion">Descripción:</label>
-						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto"   value="<%= locals.oldData && oldData.descripcion? oldData.descripcion: null%>">
+						<input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto"   value="<%=producto.descripcion %>">
 						<% if (locals.errors && errors.descripcion) { %>
 							<div class="error-msg">
 								<%= errors.descripcion.msg %>                                
@@ -51,7 +51,7 @@
 						<% } %> 
 					</div>
 			
-					<button type="submit" class="submit-button">Agregar Producto</button>
+					<button type="submit" class="submit-button"> Editar Producto</button>
 				</form>
 			</div>
 		</div>

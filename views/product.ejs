@@ -15,16 +15,18 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"> <%=  product.producto  %></h2> 	
 			
-			<% if(locals.user.id == product.user.id){%>
-				 <p class="product-detail-description">
-				<a href="/productEdit/<%= product.id%>">Editar</a>
-				</p>
-				<form action="/product/<%= product.id %>" method="POST">
-					<button class="logout" type="submit">
-						Borrar producto <i class="fas fa-sign-in-alt"></i>
-					</button>
-				</form>
-				 <% } %>
+			
+				 <% if(locals.user){%>
+					<% if (locals.user.id == product.user.id) { %>
+						<h3 class="product-detail-description">
+							<a href="/editarProducto/<%= product.id%>">Editar</a>
+						</h3>
+							<form action="/product/<%= product.id %>" method="POST">
+								<button class="botonProducto" type="submit">
+									Borrar producto <i class=""></i>
+								</button>
+							</form>
+					<% } %> <% } %>
 
 			
 		</div>
@@ -33,7 +35,7 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/productos/<%= product.imagen%> %>" alt="<%= product.producto %>" class="product-detail-img">
-					<p class="product-detail-description"> Publicado por: <%=  product.user.email %></p> 
+					<p class="product-detail-description"> Publicado por: <a href="/users/profile/<%=product.user.id %>"> <%= product.user.email %> </a></p> 
 					<p class="product-detail-description"><%= product.descripcion %></p>
 				</article>
 

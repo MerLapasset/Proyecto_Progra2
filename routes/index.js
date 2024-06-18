@@ -7,7 +7,7 @@ router.get ("/",controllerGeneral.index)
 router.get("/product/:id", controllerGeneral.producto.index)
 router.post("/product/:id", controllerGeneral.producto.borrar)
 router.get ("/editarProducto/:id", controllerGeneral.editarProducto.index) 
-router.post ("/editarProducto/:id", controllerGeneral.editarProducto.modificar) 
+router.post ("/editarProducto/:id",productAddValidations,controllerGeneral.editarProducto.modificar) 
 
 
 router.get ("/searchResults", controllerGeneral.searchResults) 
