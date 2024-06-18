@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2024 a las 22:51:05
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: localhost:8889
+-- Tiempo de generación: 18-06-2024 a las 17:40:33
+-- Versión del servidor: 5.7.39
+-- Versión de PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyectointegrador`
 --
+CREATE DATABASE IF NOT EXISTS `proyectointegrador` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `proyectointegrador`;
 
 -- --------------------------------------------------------
 
@@ -32,10 +34,10 @@ CREATE TABLE `comentarios` (
   `comentario` varchar(500) NOT NULL,
   `usuario_id` int(10) UNSIGNED DEFAULT NULL,
   `producto_id` int(10) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `comentarios`
@@ -84,11 +86,11 @@ CREATE TABLE `productos` (
   `imagen` varchar(100) DEFAULT NULL,
   `producto` varchar(100) NOT NULL,
   `descripcion` varchar(1500) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `usuario_id` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -104,7 +106,10 @@ INSERT INTO `productos` (`id`, `imagen`, `producto`, `descripcion`, `created_at`
 (7, 'lasombraDelViento.png', 'La sombra del viento', 'Una novela misteriosa que sigue la búsqueda de un joven llamado Daniel Sempere para descubrir la verdad detrás de un libro maldito llamado \'La Sombra del Viento\'.', '2024-04-15 19:01:59', '2024-04-15 19:01:59', NULL, 3),
 (8, 'harryPotter.png', 'Harry Potter y la piedra filosofal', 'El primer libro de la serie Harry Potter, que narra las aventuras del joven mago Harry Potter mientras descubre su verdadera identidad en el mundo mágico.', '2024-04-15 19:02:43', '2024-04-15 19:02:43', NULL, 4),
 (9, 'elalquimista.png', 'El alquimista', 'Una historia inspiradora sobre un joven pastor que emprende un viaje en busca de un tesoro y descubre el verdadero significado de la vida en el camino.', '2024-04-15 19:05:01', '2024-04-15 19:05:01', NULL, 5),
-(10, 'narnia.png', 'Las Crónicas de Narnia: El León, la Bruja y el Armario', 'El primer libro en la serie de fantasía Las Crónicas de Narnia, que sigue a cuatro niños mientras descubren un mundo mágico detrás de un armario.', '2024-04-15 19:05:56', '2024-04-15 19:05:56', NULL, 1);
+(10, 'narnia.png', 'Las Crónicas de Narnia: El León, la Bruja y el Armario', 'El primer libro en la serie de fantasía Las Crónicas de Narnia, que sigue a cuatro niños mientras descubren un mundo mágico detrás de un armario.', '2024-04-15 19:05:56', '2024-04-15 19:05:56', NULL, 1),
+(25, 'elcodigo.png', 'El código Da Vinci', 'El código Da Vinci\" es una novela de misterio que sigue al profesor de simbología de Harvard, Robert Langdon, y a la criptóloga francesa, Sophie Neveu, mientras investigan el asesinato del curador del Museo del Louvre, Jacques Saunière. Alrededor del cuerpo de Saunière, se encuentran una serie de pistas codificadas que llevan a Langdon y Neveu en una emocionante carrera contra el tiempo a través de Europa. A medida que desentrañan una serie de enigmas, descubren una conspiración que involucra a la Iglesia Católica y una antigua sociedad secreta que protege un poderoso secreto relacionado con el Santo Grial. La novela combina elementos históricos, religiosos y de arte con una narrativa rápida y llena de suspense, manteniendo a los lectores en vilo hasta el último momento.', '2024-06-18 16:49:42', '2024-06-18 16:49:42', NULL, 7),
+(26, 'tom.png', 'Las aventuras de Tom Sawyer', 'Las aventuras de Tom Sawyer\" es una novela clásica que narra las peripecias de un niño llamado Tom Sawyer, que vive en el pueblo ficticio de St. Petersburg, a orillas del río Misisipi, en la década de 1840. Tom es un muchacho travieso y astuto, siempre en busca de aventuras junto a su mejor amigo, Huckleberry Finn. La novela describe episodios memorables como la fuga de Tom para convertirse en pirata, el descubrimiento de un tesoro escondido, y su testimonio en el juicio de un asesinato. Twain utiliza el carácter y las aventuras de Tom para satirizar la sociedad de su tiempo, mostrando tanto las travesuras y creatividad de los niños como la hipocresía y absurdos del mundo adulto.', '2024-06-18 16:50:38', '2024-06-18 16:50:38', NULL, 7),
+(27, 'losjuegos.png', 'Los juegos del hambre', '\"Los juegos del hambre\" es el primer libro de una trilogía que se desarrolla en un futuro distópico en la nación de Panem, ubicada en lo que antes era América del Norte. La historia sigue a Katniss Everdeen, una joven de 16 años que vive en el empobrecido Distrito 12. Cada año, el Capitolio organiza los Juegos del Hambre, un evento televisado en el que un niño y una niña de cada uno de los 12 distritos deben luchar a muerte hasta que solo quede un vencedor. Cuando su hermana menor, Prim, es seleccionada para participar, Katniss se ofrece voluntariamente para tomar su lugar. A lo largo de los juegos, Katniss debe utilizar su ingenio y habilidades para sobrevivir mientras enfrenta dilemas morales y descubre los horrores y la injusticia del sistema que los obliga a luchar.', '2024-06-18 16:51:59', '2024-06-18 16:51:59', NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -119,11 +124,11 @@ CREATE TABLE `usuarios` (
   `fecha` date DEFAULT NULL,
   `dni` int(11) DEFAULT NULL,
   `foto` varchar(500) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -177,7 +182,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
