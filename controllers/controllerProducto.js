@@ -63,6 +63,7 @@ const controllerProducto= {
                    { association: "user"},
                    { 
                     association: "comments",
+                    order: [['createdAt', 'DESC']],
                     include: { association: "user" } // Incluye la información del usuario en cada comentario
                 }            ]
             })
@@ -82,17 +83,41 @@ const controllerProducto= {
         borrar: function (req, res) {
             let libroABorrar = req.params.id;
     
+    
             dataBase_info.Product.destroy({
                 where: [
                     { id: libroABorrar }
                 ]
             })
-                .then(() => {
-                    return res.redirect('/');
+    
+                
+            const validationErrors = validationResult(req);
+                  
+            if(!validationErrors.isEmpty()){
+                return res.render("product",{
+                    errors: validationErrors.mapped(),
+                    oldData:req.body
                 })
-                .catch(error => {
-                    console.log(error);
-                })
+            }
+    
+            let usuarioLogueadoId= req.session.user.id
+            let productoCambiando = req.params.id
+    
+            const comentario = {
+                comentario: req.body.textoComentario,
+                usuario_id: usuarioLogueadoId, 
+                producto_id: productoCambiando,
+                createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+    
+            };
+    
+            dataBase_info.Comment.create(comentario)
+            .then(function(comentario){
+                return res.redirect('/');
+            })
+            .catch(function(error){
+                console.log("Error al guardar el ", error);
+            })
         },
         
     },
