@@ -3,7 +3,7 @@ const dataBase_info = require("../database/models")
 const {validationResult}= require ("express-validator")
 const Op= dataBase_info.Sequelize.Op;
 
-const controllersproducts= {
+const controllerProducto= {
     index: function (req, res) {
         dataBase_info.Product.findAll({
             order: [['createdAt', 'DESC']],  
@@ -93,7 +93,8 @@ const controllersproducts= {
                 .catch(error => {
                     console.log(error);
                 })
-        }
+        },
+        
     },
 
     editarProducto: {
@@ -196,4 +197,4 @@ const controllersproducts= {
     
 }
 
-module.exports= controllersproducts
+module.exports= controllerProducto

@@ -2,7 +2,7 @@ const bcryptjs = require('bcryptjs');
 const db = require("../database/models");
 const {validationResult} = require("express-validator");
 
-const controllerUsusario= {
+const controllerUsuario= {
     
     profile: function(req, res){
         db.User.findByPk(req.params.id, {
@@ -142,4 +142,4 @@ const controllerUsusario= {
     },
 }
 
-module.exports = controllerUsusario
+module.exports = controllerUsuario

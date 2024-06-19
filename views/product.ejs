@@ -55,10 +55,19 @@
 						
 		
 					</section>
-					<form class="form" action="/product/<%= product.id  %>" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
+
+					<% if(locals.user) {%>
+
+						<form class="form" action="/product/<%= product.id  %>" method="GET">
+							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+					<% } else { %>
+
+						<h1>Debes estar logueado para comentar</h1>
+					
+					<% } %>
+
 					<hr>
 				</div>
 			</div>
@@ -71,18 +80,3 @@
 
 </body>	
 </html>
-
-<!--
-	<!% if(req.session.user == undefined) {%>
-
-		<p>Debes estar logueado para comentar!</p>
-
-	<!% } else { %>
-
-		<form class="form" action="/product/<!%= product.id  %>" method="GET">
-			<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-			<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-		</form>
-
-	<!% } %>
--->
