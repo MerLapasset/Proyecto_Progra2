@@ -122,34 +122,43 @@ const controllerProducto= {
             console.log("validationErrors : ", validationErrors)
             // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
             if(!validationErrors.isEmpty()){
-                return res.render("productEdit",{
-                    errors: validationErrors.mapped(),
-                    oldData:req.body
+                const id= req.params.id
+                dataBase_info.Product.findByPk(id)
+                .then(function(producto){
+                    return res.render("productEdit",{
+                        errors: validationErrors.mapped(),
+                        oldData:req.body,
+                        producto: producto
+                    })
+
                 })
+
+            } else{
+
+                const id = req.params.id;
+                            
+                dataBase_info.Product.update(
+                    {
+                    imagen: req.body.productoImagen,
+                    producto: req.body.nombreProducto, 
+                    descripcion: req.body.descripcion},
+                    {
+                    where: {
+                        id: id
+                    }
+                })
+                    .then(function (result) {
+                        return res.redirect(`/product/${id}`)
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    })
+
             } 
                       
-            const id = req.params.id;
-            
-            dataBase_info.Product.update(
-                {
-                imagen: req.body.productoImagen,
-                producto: req.body.nombreProducto, 
-                descripcion: req.body.descripcion},
-                 {
-                where: {
-                    id: id
-                }
-            })
-                .then(function (result) {
-                    return res.redirect(`/product/${id}`)
-                })
-                .catch(function (err) {
-                    console.log(err)
-                })
         },
     },
 
-    
     
     productAdd:{
         index: function(req, res) {
