@@ -2,13 +2,23 @@ const { body } = require("express-validator")
 const db= require("../database/models")
 
 
-const commentValidation = [
-    body("textoComentario")
+const productAddValidation = [
+    body("productoImagen")
         .notEmpty()
-        .withMessage("El comentario no puede estar vacío.")
-        .bail()
-        .isLength({ min: 3 })
-        .withMessage("El comentario debe tener al menos 3 caracteres.")
+        .withMessage("Debes subir una foto")
+        .bail(),
+
+    body("nombreProducto")
+        .notEmpty()
+        .withMessage("Debes subir un nombre para el producto")
+        .bail(),
+
+
+    body("descripcion")
+        .notEmpty()
+        .withMessage("Debes subir una descripcion para el producto")
+
+
 ]
 
-module.exports = commentValidation;
+module.exports = productAddValidation;
