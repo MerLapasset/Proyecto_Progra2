@@ -58,8 +58,14 @@
 
 					<% if(locals.user) {%>
 
-						<form class="form" action="/product/<%= product.id  %>" method="GET">
-							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<form class="form" action="/product/<%= product.id %>" method="POST", novalidate>
+							<input class="form-input" name="comentario" type="text" value="<%= locals.oldData && oldData.comentario ? oldData.comentario : null %>" placeholder="Agregar comentario">
+							<% if (locals.errors && errors.comentario) { %>
+								<div class="error-msg">
+									<%= errors.comentario.msg %>                                
+								</div>                            
+							<% } %> 
+
 							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
 					<% } else { %>

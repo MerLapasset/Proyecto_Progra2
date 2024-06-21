@@ -98,6 +98,39 @@ const controllerProducto= {
     
                 
         },
+        comentarios: function(req, res){
+            const validationErrors = validationResult(req);
+
+                  
+            if(!validationErrors.isEmpty()){
+                return res.render("product",{
+                    errors: validationErrors.mapped(),
+                    oldData:req.body
+                })
+            }
+            console.log("errores: ", JSON.stringify(errors,null,4))
+
+    
+            let usuarioLogueadoId= req.session.user.id
+            let productoId = req.params.id
+    
+            const comentario = {
+                comentario: req.body.textoComentario,
+                usuario_id: usuarioLogueadoId, 
+                producto_id: productoId,
+            };
+            console.log("comentario: ", JSON.stringify(comentario,null,4))
+            
+           
+            dataBase_info.Comment.create(comentario)
+            .then(function(comentario){
+                return res.redirect(`/product/${productoId}`);
+            })
+            .catch(function(error){
+                console.log("Error al guardar el ", error);
+            });
+            
+        }
         
     },
 

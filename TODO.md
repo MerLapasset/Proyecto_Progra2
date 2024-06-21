@@ -1,5 +1,7 @@
 1. En el partial de headerlogueado falta completar la etiqueta a, con el id del usuario.
 2. Falta terminar el punto 10
+3. Hacer el ccs de foto de perfil, para que mer deje de molestar
+4. Profile: Cambiar el orden de los productos, punto 6
 
 
 const validationErrors = validationResult(req);
