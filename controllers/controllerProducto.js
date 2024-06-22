@@ -192,7 +192,6 @@ const controllerProducto= {
         },
     },
 
-    
     productAdd:{
         index: function(req, res) {
             if (req.session.user == !undefined){

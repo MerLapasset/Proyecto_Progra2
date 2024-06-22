@@ -76,11 +76,66 @@ const controllerUsuario= {
 
     },
 
-    profileEdit: function (req,res) {
-        const usuario = db.usuario;
-        const productos = db.productos
+    profileEdit: {
+        index: function (req,res) {
+            
+            const id = req.params.id;
+            db.User.findByPk(id)
+                .then(function (usuario) {
+                    if (!usuario) {
+                        return res.status(404).send("Producto no encontrado")
+                    }
+                    res.render ("profileEdit", {usuario: usuario})
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
+        },
+        cambios: function(req, res){
 
-        return res.render ('profileEdit', { usuario, productos });       
+            const validationErrors = validationResult(req);
+            console.log("validationErrors : ", validationErrors)
+            // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo q venia en el body       
+            if(!validationErrors.isEmpty()){
+                const id= req.params.id
+                db.User.findByPk(id)
+                .then(function(usuario){
+                    return res.render("profileEdit",{
+                        errors: validationErrors.mapped(),
+                        oldData:req.body,
+                        usuario: usuario
+                    })
+
+                })
+
+            } else{
+
+                const id = req.params.id;
+                            
+                db.User.update(
+                    {
+                    email: req.body.usuarioEmail,
+                    name: req.body.usuarioName,
+                    password: bcryptjs.hashSync(req.body.usuarioPassword),
+                    fecha: req.body.usuarioFecha,
+                    dni: req.body.usuarioDni,
+                    foto: req.body.usuarioFoto
+                    },
+                    {
+                    where: {
+                        id: id
+                    }
+                })
+                    .then(function(result) {
+                        return res.redirect(`/users/profile/${id}`)
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    })
+
+            } 
+
+        },
     },
 
     login:{

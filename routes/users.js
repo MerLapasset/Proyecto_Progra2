@@ -10,7 +10,8 @@ router.post("/register", registerValidation, controllerUsuario.register.guardar)
 
 router.get ("/login", controllerUsuario.login.index); 
 router.post('/login', loginValidation, controllerUsuario.login.general);
-router.get ("/profileEdit", controllerUsuario.profileEdit); 
+router.get ("/profileEdit/:id", controllerUsuario.profileEdit.index);
+router.post ("/profileEdit/:id", registerValidation,controllerUsuario.profileEdit.cambios);
 router.get("/profile/:id", controllerUsuario.profile,);
 
 router.post('/logout', controllerUsuario.logout);
