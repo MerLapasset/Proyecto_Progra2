@@ -58,12 +58,12 @@ const controllerProducto= {
         
             const id = req.params.id
             dataBase_info.Product.findByPk(id,{
+                order: [['createdAt', 'DESC']],
                 include: [
                     
                    { association: "user"},
                    { 
                     association: "comments",
-                    order: [['createdAt', 'DESC']],
                     include: { association: "user" } // Incluye la información del usuario en cada comentario
                 }            ]
             })
@@ -108,7 +108,7 @@ const controllerProducto= {
                     oldData:req.body
                 })
             }
-            console.log("errores: ", JSON.stringify(errors,null,4))
+            console.log("validationErrors : ", JSON.stringify(validationErrors,null,4))
 
     
             let usuarioLogueadoId= req.session.user.id
@@ -124,10 +124,10 @@ const controllerProducto= {
            
             dataBase_info.Comment.create(comentario)
             .then(function(comentario){
-                return res.redirect(`/product/${productoId}`);
+                return res.redirect('/product/${productoId}');
             })
             .catch(function(error){
-                console.log("Error al guardar el ", error);
+                console.log("Error al guardar el comentario", error);
             });
             
         }

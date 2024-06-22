@@ -21,7 +21,7 @@
 						<h3 class="product-detail-description">
 							<a href="/editarProducto/<%= product.id%>">Editar</a>
 						</h3>
-							<form action="/product/<%= product.id %>" method="POST">
+							<form action="/product/<%= product.id %>/delete" method="POST">
 								<button class="botonProducto" type="submit">
 									Borrar producto <i class=""></i>
 								</button>
@@ -58,11 +58,11 @@
 
 					<% if(locals.user) {%>
 
-						<form class="form" action="/product/<%= product.id %>" method="POST", novalidate>
-							<input class="form-input" name="comentario" type="text" value="<%= locals.oldData && oldData.comentario ? oldData.comentario : null %>" placeholder="Agregar comentario">
-							<% if (locals.errors && errors.comentario) { %>
+						<form class="form" action="/product/<%= product.id %>/comment" method="POST" novalidate>
+							<input class="form-input" name="textoComentario" type="text" value="<%= locals.oldData && locals.oldData.textoComentario ? locals.oldData.textoComentario : '' %>" placeholder="Agregar comentario">
+							<% if (locals.errors && loclas.errors.textoComentario) { %>
 								<div class="error-msg">
-									<%= errors.comentario.msg %>                                
+									<%= locals.errors.textoComentario.msg %>                                
 								</div>                            
 							<% } %> 
 
@@ -70,7 +70,7 @@
 						</form>
 					<% } else { %>
 
-						<h1>Debes estar logueado para comentar</h1>
+						<h1>Debes estar logueado para comentar!</h1>
 					
 					<% } %>
 
