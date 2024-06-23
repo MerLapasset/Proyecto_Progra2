@@ -52,8 +52,41 @@
 		</div>
 	</div>
 	<!-- /Novedades -->
+
 	<!-- Más comentados -->
-	
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title">Más Comentados</h2>
+            </div>
+            <% 
+                productos.sort((a, b) => b.comments.length - a.comments.length); 
+                const productosMasComentados = productos.slice(0, 4);
+
+                for (let i = 0; i < productosMasComentados.length; i++) {
+            %>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <section class="product-box">
+                        <a href="/product/<%= productosMasComentados[i].id %>">
+                            <figure class="product-box_image">
+                                <% if (productosMasComentados[i].imagen != '') { %>
+                                    <img src="/images/productos/<%= productosMasComentados[i].imagen %>" alt="<%= productosMasComentados[i].producto %>">
+                                <% } else { %>
+                                    <img src="/images/users/<%= productosMasComentados[i].user.foto %>" alt="<%= productosMasComentados[i].producto %>">
+                                <% } %>
+                            </figure>
+                            <article class="product-box_data">
+                                <h2><%= productosMasComentados[i].producto %></h2>
+                                <p><%= productosMasComentados[i].descripcion %></p>
+                                <p>Comentarios: <%= productosMasComentados[i].comments.length %></p>
+                                <p><a href="/users/profile/<%= productosMasComentados[i].user.id %>"><%= productosMasComentados[i].user.name %></a></p>
+                            </article>
+                        </a>
+                    </section>
+                </div>
+            <% } %>
+        </div>
+    </div>
 	<!-- /Más comentados -->
 
 	<!-- footer -->

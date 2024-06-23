@@ -7,7 +7,6 @@ const controllerProducto = {
     index: function (req, res) {
         dataBase_info.Product.findAll({
             order: [['createdAt', 'DESC']],
-            limit: 8,
             include: [
                 { association: "user" },
                 {
