@@ -31,3 +31,12 @@ const validationErrors = validationResult(req);
             .catch(function(error){
                 console.log("Error al guardar el ", error);
             })
+
+
+! Nombres de usuario y contraseñas:
+    1. maiadolensky@gmail.com Udesa2024!
+    2. juana@gmail.com Juana2024!
+    3. mer@gmail.com Mer2024!
+    4... misma logica
+
+    maiadolensky@gmail.com Udesa2024!

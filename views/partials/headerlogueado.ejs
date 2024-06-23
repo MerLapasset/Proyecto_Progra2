@@ -35,9 +35,8 @@
             </ul>
 
             <ul class="right-navbar">
-                <li><a href="/users/profile">
-                    <%= locals.user.email %>
-                        <!--%= usuario.nombreUs %!-->
+                <li><a href="/users/profile/<%= user.id %>">
+                    <%= user.email %>
                         </a>
                     </li>
                     <li>
