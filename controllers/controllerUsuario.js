@@ -8,13 +8,19 @@ const controllerUsuario= {
         db.User.findByPk(req.params.id, {
 
             include: [
-                
-                {association: "products",
-                    include: { association: "comments" },
-                    order: [['createdAt', 'DESC']]
-                   },
- 
-             ]
+                {
+                    association: "products",
+                    separate: true, 
+                    order: [['createdAt', 'DESC']], 
+                    include: [
+                        {
+                            association: "comments",
+                            separate: true,
+                            order: [['createdAt', 'DESC']]
+                        }
+                    ]
+                }
+            ]
         })
             .then(function(data){
                 return res.render("profile", { profile: data });
