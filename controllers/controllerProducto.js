@@ -177,7 +177,7 @@ const controllerProducto = {
 
     productAdd: {
         index: function (req, res) {
-            if (req.session.user == !undefined) {
+            if (req.session.user == undefined) {
                 return res.redirect("/");
             } else {
                 return res.render("productAdd");
