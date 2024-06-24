@@ -21,6 +21,18 @@ const profileEditValidation = [
         .bail()
         .isStrongPassword()
         .withMessage("La contraseña debe contener al menos 8 caracteres: una minúscula, una mayúscula y un caracter especial"),
+    
+    body("usuarioFecha")
+        .notEmpty()
+        .withMessage("Debes completar con la fecha de nacimiento"),
+    
+    body("usuarioDni")
+        .notEmpty()
+        .withMessage("Debes completar tu dni"),
+    
+    body("usuarioFoto")
+        .notEmpty()
+        .withMessage("Debes completar tu foto"),
 
 ]
 
