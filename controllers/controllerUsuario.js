@@ -61,15 +61,26 @@ const controllerUsuario= {
                     oldData:req.body
                 })
             } 
+            //console.log ("comentarios", JSON.stringify(lista_comentarios,null,4))
+
             // Guardar un usuario en la db
+            //console.log ("fehca", JSON.stringify(req.body.fechaNacimiento,null,4))
+
             const user = {
                 email: req.body.email,
                 name: req.body.name,
                 password: bcryptjs.hashSync(req.body.password), 
-                fecha: req.body.fechaNacimiento,
-                dni: req.body.nroDocumento,
                 foto: req.body.fotoPerfil
             };
+
+            if(req.body.fechaNacimiento){
+
+                user.fecha= req.body.fechaNacimiento
+            } 
+            if (req.body.nroDocumento){
+                user.dni= req.body.nroDocumento
+            }
+
             //creamos el usuario
             db.User
                 .create(user)
@@ -127,16 +138,22 @@ const controllerUsuario= {
                     {
                     email: req.body.usuarioEmail,
                     name: req.body.usuarioName,
-                    fecha: req.body.usuarioFecha,
-                    dni: req.body.usuarioDni,
                     foto: req.body.usuarioFoto       
                     
-
-                    };
+                    };            
                 
                 if (req.body.usuarioPassword) {
                     usuarioEditado.password = bcryptjs.hashSync(req.body.usuarioPassword);
-                 }
+                 };
+                 if(req.body.usuarioFecha){
+
+                    user.fecha= req.body.usuarioFecha
+                } 
+                if (req.body.usuarioDni){
+                    user.dni= req.body.usuarioDni
+                }
+
+
                 db.User.update(usuarioEditado, {where: {
                     id:id
                 }}) 
