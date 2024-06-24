@@ -19,8 +19,8 @@
 		<form class="form registration-form" action="/users/profileEdit/<%= usuario.id %>" method="POST", novalidate>
 			<!-- Contenido del formulario -->
 			<div class="form-group">
-				<label for="usuario">Usuario:</label>
-				<input type="text" id="usuario" name="usuarioName" placeholder="(tu nombre de usuario)" value="<%= usuario.name  %>" ,required>
+				<label for="usuarioName">Usuario:</label>
+				<input type="text" id="usuarioName" name="usuarioName" placeholder="(tu nombre de usuario)" value="<%= usuario.name  %>" required>
 				<% if (locals.errors && errors.usuarioName) { %>
 					<div class="error-msg">
 						<%= errors.usuarioName.msg %>                                
@@ -39,8 +39,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="password">Contraseña:</label>
-				<input type="password" id="usuarioPassword" name="password" placeholder="" required>
+				<label for="usuarioPassword">Contraseña:</label>
+				<input type="password" id="usuarioPassword" name="usuarioPassword" placeholder="Deja vacío si no deseas cambiar" required>
 				<% if (locals.errors && errors.usuarioPassword) { %>
 					<div class="error-msg">
 						<%= errors.usuarioPassword.msg %>                                

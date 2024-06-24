@@ -88,9 +88,13 @@ const controllerUsuario= {
             const id = req.params.id;
             db.User.findByPk(id)
                 .then(function (usuario) {
-                    if (!usuario) {
-                        return res.status(404).send("Producto no encontrado")
+                    if(!usuario){
+                        return res.status(404).send("Producto no encontrado");
                     }
+                    if(req.session.user.id !== usuario.id){
+                        return res.status(403).send("No tienes permiso para editar este perfil");
+                    }
+
                     res.render ("profileEdit", {usuario: usuario})
                 })
                 .catch(function (err) {
@@ -117,12 +121,15 @@ const controllerUsuario= {
             } else{
 
                 const id = req.params.id;
+
+                if (req.body.usuarioPassword) {
+                    updateData.password = bcryptjs.hashSync(req.body.usuarioPassword);
+                }
                             
                 db.User.update(
                     {
                     email: req.body.usuarioEmail,
                     name: req.body.usuarioName,
-                    password: bcryptjs.hashSync(req.body.usuarioPassword),
                     fecha: req.body.usuarioFecha,
                     dni: req.body.usuarioDni,
                     foto: req.body.usuarioFoto
