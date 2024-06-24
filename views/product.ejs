@@ -60,9 +60,9 @@
 
 						<form class="form" action="/product/<%= product.id %>" method="POST" novalidate>
 							<input class="form-input" name="textoComentario" type="text" value="<%= locals.oldData && locals.oldData.textoComentario ? locals.oldData.textoComentario : '' %>" placeholder="Agregar comentario">
-							<% if (locals.errors && locals.errors.textoComentario) { %>
+							<% if (locals.validationErrors && locals.validationErrors.textoComentario) { %>
 								<div class="error-msg">
-									<%= locals.errors.textoComentario.msg %>                                
+									<%= locals.validationErrors.textoComentario.msg %>                                
 								</div>                            
 							<% } %> 
 

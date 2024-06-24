@@ -1,7 +1,6 @@
-1. En el partial de headerlogueado falta completar la etiqueta a, con el id del usuario.
-2. Falta terminar el punto 10
-3. Hacer el ccs de foto de perfil, para que mer deje de molestar
-4. Profile: Cambiar el orden de los productos, punto 6
+1. Falta el error en el punto 10
+2. Hacer el ccs de foto de perfil, para que mer deje de molestar
+
 
 
 const validationErrors = validationResult(req);
@@ -134,3 +133,8 @@ comentarios: function (req, res) {
                     });
             }
         }
+
+
+
+        Dudas
+        2. Punto 11: El formulario de edición debe contar con la seguridad suficiente para que el usuario solamente pueda editar su información y no la de otros usuarios.
