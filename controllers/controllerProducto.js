@@ -141,20 +141,25 @@ const controllerProducto = {
     },  
 
     editarProducto: {
+        
         index: function (req, res) {
-            const id = req.params.id;
-            dataBase_info.Product.findByPk(id)
-                .then(function (producto) {
-                    if (!producto) {
-                        return res.status(404).send("Producto no encontrado");
-                    }
-                    res.render("productEdit", { producto: producto });
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
+            if (req.session.user == undefined) {
+                return res.redirect("/"); // Redirige a la página de inicio si el usuario no está logueado
+            } else {
+                const id = req.params.id;
+                dataBase_info.Product.findByPk(id)
+                    .then(function (producto) {
+                        if (!producto) {
+                            return res.status(404).send("Producto no encontrado");
+                        }
+                        res.render("productEdit", { producto: producto });
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+            }
         },
-
+    
         modificar: function (req, res) {
             const validationErrors = validationResult(req);
             console.log("validationErrors : ", validationErrors)

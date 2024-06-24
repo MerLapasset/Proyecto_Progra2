@@ -147,10 +147,10 @@ const controllerUsuario= {
                  };
                  if(req.body.usuarioFecha){
 
-                    user.fecha= req.body.usuarioFecha
+                    usuarioEditado.fecha= req.body.usuarioFecha
                 } 
                 if (req.body.usuarioDni){
-                    user.dni= req.body.usuarioDni
+                    usuarioEditado.dni= req.body.usuarioDni
                 }
 
 
