@@ -183,7 +183,7 @@ const controllerProducto = {
                     }
                 )
                 .then(function (result) {
-                    return res.redirect('/product/${id}');
+                    return res.redirect(`/product/${id}`);
                 })
                 .catch(function (err) {
                     console.log(err);

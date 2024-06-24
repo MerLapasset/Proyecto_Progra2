@@ -31,7 +31,7 @@ const registerValidation = [
         .withMessage("Debes Introducir un password")
         .bail()
         .isStrongPassword()
-        .withMessage("La contraseña debe contener al menos 8 caracteres: una minúscula, una mayúscula y un carater especial"),
+        .withMessage("La contraseña debe contener al menos 8 caracteres: una minúscula, una mayúscula y un caracter especial"),
 
 ]
 

@@ -1,6 +1,7 @@
 const bcryptjs = require('bcryptjs');
 const db = require("../database/models");
 const {validationResult} = require("express-validator");
+const { where } = require('sequelize');
 
 const controllerUsuario= {
     
@@ -89,7 +90,7 @@ const controllerUsuario= {
             db.User.findByPk(id)
                 .then(function (usuario) {
                     if(!usuario){
-                        return res.status(404).send("Producto no encontrado");
+                        return res.status(404).send("Usuario no encontrado");
                     }
                     if(req.session.user.id !== usuario.id){
                         return res.status(403).send("No tienes permiso para editar este perfil");
@@ -100,7 +101,7 @@ const controllerUsuario= {
                 .catch(function (err) {
                     console.log(err)
                 })
-        },
+        }, 
         cambios: function(req, res){
 
             const validationErrors = validationResult(req);
@@ -121,24 +122,24 @@ const controllerUsuario= {
             } else{
 
                 const id = req.params.id;
-
-                if (req.body.usuarioPassword) {
-                    updateData.password = bcryptjs.hashSync(req.body.usuarioPassword);
-                }
                             
-                db.User.update(
+                let usuarioEditado= 
                     {
                     email: req.body.usuarioEmail,
                     name: req.body.usuarioName,
                     fecha: req.body.usuarioFecha,
                     dni: req.body.usuarioDni,
-                    foto: req.body.usuarioFoto
-                    },
-                    {
-                    where: {
-                        id: id
-                    }
-                })
+                    foto: req.body.usuarioFoto       
+                    
+
+                    };
+                
+                if (req.body.usuarioPassword) {
+                    usuarioEditado.password = bcryptjs.hashSync(req.body.usuarioPassword);
+                 }
+                db.User.update(usuarioEditado, {where: {
+                    id:id
+                }}) 
                     .then(function(result) {
                         return res.redirect(`/users/profile/${id}`)
                     })
