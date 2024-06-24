@@ -58,9 +58,9 @@
 
 					<% if(locals.user) {%>
 
-						<form class="form" action="/product/<%= product.id %>/comment" method="POST" novalidate>
+						<form class="form" action="/product/<%= product.id %>" method="POST" novalidate>
 							<input class="form-input" name="textoComentario" type="text" value="<%= locals.oldData && locals.oldData.textoComentario ? locals.oldData.textoComentario : '' %>" placeholder="Agregar comentario">
-							<% if (locals.errors && loclas.errors.textoComentario) { %>
+							<% if (locals.errors && locals.errors.textoComentario) { %>
 								<div class="error-msg">
 									<%= locals.errors.textoComentario.msg %>                                
 								</div>                            
