@@ -56,6 +56,8 @@ const controllerProducto = {
                     { association: "user" },
                     {
                         association: "comments",
+                        separate: true,
+                        order: [['createdAt', 'DESC']],
                         include: { association: "user" }
                     }
                 ]
@@ -115,7 +117,7 @@ const controllerProducto = {
 
             dataBase_info.Comment.create(comentario)
                 .then(function (comentario) {
-                    return res.redirect(`/product/${productoId}`);
+                    return res.redirect('/product/${productoId}');
                 })
                 .catch(function (error) {
                     console.log("Error al guardar el comentario", error);
@@ -166,7 +168,7 @@ const controllerProducto = {
                     }
                 )
                 .then(function (result) {
-                    return res.redirect(`/product/${id}`);
+                    return res.redirect('/product/${id}');
                 })
                 .catch(function (err) {
                     console.log(err);
