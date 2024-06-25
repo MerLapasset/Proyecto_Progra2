@@ -16,14 +16,14 @@ const profileEditValidation = [
         .withMessage("Debes completar tu nombre de usuario"),
         
     body("usuarioPassword")
-        .notEmpty()
-        .withMessage("Debes Introducir un password")
-        .bail()
-        .isStrongPassword()
-        .withMessage("La contraseña debe contener al menos 8 caracteres: una minúscula, una mayúscula y un caracter especial"),
-    
-   
-
+        .custom((value, { req }) => {
+            if (req.body.usuarioPassword && req.body.usuarioPassword.trim() !== '') {
+                if (!req.body.usuarioPassword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+                    throw new Error('La contraseña debe contener al menos 8 caracteres: una minúscula, una mayúscula, un número y un caracter especial');
+                }
+            }
+            return true;
+        })
 ]
 
 module.exports = profileEditValidation;

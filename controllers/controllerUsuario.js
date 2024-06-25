@@ -144,7 +144,13 @@ const controllerUsuario= {
                 
                 if (req.body.usuarioPassword) {
                     usuarioEditado.password = bcryptjs.hashSync(req.body.usuarioPassword);
+                 } else {
+                    db.User.findByPk(id)
+                    .then(function(usuario){
+                        return usuarioEditado.password
+                    })
                  };
+                
                  if(req.body.usuarioFecha){
 
                     usuarioEditado.fecha= req.body.usuarioFecha
