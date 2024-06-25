@@ -73,25 +73,39 @@ const controllerProducto = {
                 res.status(500).send('Internal Server Error');
             });
         },  // <--- Aquí falta el cierre del método index
+        
 
         borrar: function (req, res) {
             let productoABorrar = req.params.id;
+            dataBase_info.Product.findByPk(productoABorrar, {
+                include: {association: "user"}
+            })
+                .then (function(producto){ 
+                    //si el usario que inicio sesion es el mismo que el que cargo el producto entonces se puede borrar
 
-            dataBase_info.Comment.destroy({
-                where: { producto_id: productoABorrar }
-            })
-            .then(() => {
-                return dataBase_info.Product.destroy({
-                    where: { id: productoABorrar }
+                    if (req.session.user.id == producto.user.id){
+                        dataBase_info.Comment.destroy({
+                            where: { producto_id: productoABorrar }
+                        })
+                        .then(() => {
+                            return dataBase_info.Product.destroy({
+                                where: { id: productoABorrar }
+                            });
+                        })
+                        .then(() => {
+                            return res.redirect('/');
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            res.status(500).send('Error al intentar eliminar el producto y sus comentarios');
+                        });
+                    }
+                    
+                })
+                .catch(function (err) {
+                    console.log(err);
                 });
-            })
-            .then(() => {
-                return res.redirect('/');
-            })
-            .catch(error => {
-                console.error(error);
-                res.status(500).send('Error al intentar eliminar el producto y sus comentarios');
-            });
+            
         },
         comentarios: function (req, res) {
             const validationErrors = validationResult(req);
@@ -144,13 +158,20 @@ const controllerProducto = {
         
         index: function (req, res) {
             if (req.session.user == undefined) {
-                return res.redirect("/"); // Redirige a la página de inicio si el usuario no está logueado
+                return res.redirect("/"); 
             } else {
                 const id = req.params.id;
-                dataBase_info.Product.findByPk(id)
+                dataBase_info.Product.findByPk(id, {
+                    include: {association: "user"}
+                })
                     .then(function (producto) {
+                        console.log("product", JSON.stringify(producto,null,4))
+
+                        
                         if (!producto) {
                             return res.status(404).send("Producto no encontrado");
+                        } else if (req.session.user.id != producto.user.id){
+                            return res.redirect("/"); 
                         }
                         res.render("productEdit", { producto: producto });
                     })
