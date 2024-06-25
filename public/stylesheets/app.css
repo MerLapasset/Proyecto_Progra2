@@ -179,29 +179,20 @@ hr {
 /*se llaman de registro pero sirven para todos*/
 .registration-container {
   display: flex;
-  justify-content: center; 
-  align-items: center;     
+  justify-content: center;
+  align-items: center;
   height: auto;            
   background-color: var(--light-gray);
-  
+  padding: 20px;
 }
 
-.registration-title {
-  text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 30px;
-  color: var(--gray);
-}
-
-/* Estilos propios de los formularios */
 .registration-form {
   background-color: #ffffff;
   border-radius: 8px;
   padding: 40px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  margin-top: 20px;
-  max-width: 600px;
+  max-width: 600px; /* Adjust this to control the width of the form */
 }
 
 .form-group {
@@ -215,7 +206,6 @@ hr {
   color: var(--dark-blue);
 }
 
-/* !!!ver si anda cuando lo pase al proyecto */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
@@ -244,6 +234,14 @@ hr {
 .submit-button:hover {
   background-color: var(--light-blue);
 }
+
+.error-msg {
+  color: rgb(209, 0, 0);
+  font-size: 1.4em;
+  margin-top: 10px;
+}
+
+
 
 .form-group--inline {
   display: flex;
@@ -276,7 +274,8 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   padding-top: 30px;
-  color: var(--gray); /* color de los títulos en products */
+  color: var(--gray); 
+  text-align: center; 
 }
 
 
@@ -362,6 +361,8 @@ hr {
   transform: rotate(360deg);
   box-shadow: 0 0 5px var(--green);
 }
+
+
 
 /*====== Resultados ======*/
 
@@ -494,23 +495,36 @@ hr {
   margin-bottom: 15px;
 }
 
+.product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px; 
+}
+
+.product-detail-description {
+  margin: 0; 
+}
+
 .action-button {
   border: none;
-  border-radius: 8px;
-  font-size: 1.2em;
-  color: #ffffff;
+  font-size: 1.8em;
+  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 15px 30px;
-  margin-top: 15px;
+  background: none; 
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-.action-button.edit {
-  background-color: chocolate;
+.action-button:hover {
+  opacity: 0.8; 
 }
-.action-button.delete {
-  background-color: rgb(248, 69, 37);
+
+.action-button:focus {
+  outline: none; 
 }
 .comments {
   padding: 30px 15px 15px 0;
@@ -577,8 +591,11 @@ textarea.form-input {
   font-size: 16px;
 }
 
-.foto-perfil{
-  border-radius: 50%;
+.foto-perfil {
+  width: 100%;
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 50%; 
 }
 
 .main-title{

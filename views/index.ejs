@@ -2,13 +2,8 @@
  
 <body>
 	<!-- Header -->
-	<% if(locals.user){%>
-		<%- include('./partials/headerlogueado') %>
-		<h2 class="text-center">Hola <%= locals.user.name %></h2>
+	<%- include('./partials/header') %>
 
-	<% }else{ %>
-		<%- include('./partials/header') %>
-	<% } %>
 	
 	<!-- Banner -->
 	<div class="banner">

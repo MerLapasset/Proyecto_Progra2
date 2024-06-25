@@ -3,19 +3,14 @@
 
 <body>
 	<!-- Header -->
-	<% if(locals.user){%>
-		<%- include('./partials/headerlogueado') %>
-
-	<% }else{ %>
-		<%- include('./partials/header') %>
-	<% } %>
+	<%- include('./partials/header') %>
 	
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
+			<div class="col-12 text-center">
+				<h2 class="products-title">Agregar producto</h2>
+			  </div>
 
 			<div class="container registration-container">
 				<form class="form registration-form" action="/productAdd" method="POST", novalidate>
